@@ -1,0 +1,14 @@
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            rokk
+tagline:          is functional # and is designing a possible future where he'll be able to live at least in 3D
+url:              http://tadruj.github.io
+paginate:         1
+baseurl:          /
+author:
+  name:           Rok Krulec
+  url:            https://twitter.com/rokk
+  email:          rok.krulec 69 gmail.com
