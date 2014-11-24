@@ -18,7 +18,7 @@ While a process might be recursive (WHAT), it may be implemented (HOW) as a recu
 (define (exponentiate b n)
   (if (= n 0)
   1
-  (* b (exponentiate b (- n 1))))) ; dirty
+  (* b (exponentiate b (- n 1))))) ; non-optimizeable
 
 (exponentiate 2 1)
 (exponentiate 2 2)
@@ -35,7 +35,7 @@ While a process might be recursive (WHAT), it may be implemented (HOW) as a recu
 (define (exponentiate-iter b n acc)
   (if (= n 0)
   acc
-  (exponentiate-iter b (- n 1) (* b acc)))) ; pure
+  (exponentiate-iter b (- n 1) (* b acc)))) ; optimizeable
 
 (exponentiate-iter 2 1 1)
 (exponentiate-iter 2 2 1)
@@ -47,7 +47,7 @@ While a process might be recursive (WHAT), it may be implemented (HOW) as a recu
 
 **Recursive procedure**
 
-calls itself in a dirty way, so the interpreter has to put some extra information about the call to the stack every iteration and then re-execute backwards.
+calls itself in a way, that the interpreter has to put some extra information about the call to the stack every iteration and then re-execute backwards.
 
     input ->
       proc, push ->
@@ -60,7 +60,7 @@ calls itself in a dirty way, so the interpreter has to put some extra informatio
 
 **Iterative procedure**
 
-calls itself in a pure way, the call containing all the information for the next procedure execution.
+calls itself in a way, that the call is containing all the information for the next procedure execution. Which can be optimized with Tail-call optimization.
 
 Visually this can be represented as a chain of procedures, which at the end return a result. This is practically a for loop implemented with recursion. A strategy with accumulators is a common way of implementing simpler processes.
 
@@ -69,3 +69,5 @@ Visually this can be represented as a chain of procedures, which at the end retu
     proc -> 
     proc -> 
     output
+
+_Thanks to [@sgrove](https://twitter.com/sgrove) for reviewing this text_
