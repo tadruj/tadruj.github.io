@@ -100,10 +100,67 @@ length' x = sum [1 | _ <- x]
 leaveCapsOnly s = [x | x <- s, x `elem` ['A'..'Z']]
 
 -- Q:Remove odd numbers without flattening the list of lists of numbers [[1,2,3,4,5],[6,7,8]]
-[ [ x | x <- row, even x ] | row <- [[1,2,3,4,5],[6,7,8]]]
+noOdsNoFlatten = [ [ x | x <- row, even x ] | row <- [[1,2,3,4,5],[6,7,8]]]
 
 -- Tuples
 
+myFamily = [("mama",50),("ana",20),("rok",33)]
+myMamaName = fst (head myFamily)
+myRokAge = snd (last myFamily) 
 
+-- Q:Add together two arrays into array of tuples
+zippedTuples = zip [1 .. 5] ["one", "two", "three", "four", "five"]
+
+-- nice example of lazy evaluation - working with infinite arrays
+zippingTwoArraysIntoArrayOfTuples = zip [1..] ["apple", "orange", "cherry", "mango"]
+
+-- Types
+
+-- explicityly or implicitly telling the type the read must return
+
+-- Q:Create list of numbers from a string
+implicitArrayFromString = read "[1,2,3]" ++ [4] -- implicit - needs a number to have and idea for Int inside of [Int]
+explicitArrayFromString = (read "[1,2,3,4]") :: [Int] -- explicit - needs parents
+explicitTupleFromString = read "(3, 'a')" :: (Int, Char)
+
+myHugeInteger = 20 :: Integer
+mySmallerInteger = 20 :: Int
+mySinglePrecision = 20 :: Float
+myDoublePrecision = 20 :: Double
+myBool = True :: Bool
+myChar = 'a' :: Char
+
+-- Typeclasses
+--
+-- Eq - Equality - supports == and /=
+-- Ord - Ordering - supports > >= < <=
+-- Show - can be presented as String
+-- Read - can be read from String but needs to explicit type annotation -- see [ie].*ArrayFromString
+-- Enum - Sequentially ordered - has succ and pred functions - (), Bool, Char, Ordering, Int, Integer, Float and Double
+-- Bounded - Upper and lower limit minBound :: Int, maxBound :: Int
+-- Num - Numeric - act like numbers (must also have properties of Eq and Show)
+-- Integral - whole numbers
+-- Floating - Double and Float
+
+-- Pattern Matching
+
+-- Q:Create a function which adds vectors
+addVectors :: (Num a) => (a, a) -> (a, a) -> (a, a)  
+addVectors (x1, y1) (x2, y2) = (x1 + x2, y1 + y2)
+
+-- NOTE: I guess the pattern matching is used mostly for destructuring
+
+matchHead (x:_) = x
+matchTail (_:x) = x
+matchTwo (x:y:[]) = (x,y)
+matchTwoOrMore (x:y:_) = (x,y)
+
+-- stringLength :: (Num b) => [a] -> b
+stringLength [] = 0
+stringLength (_:tail) = 1 + length tail
+
+-- Guards
+
+-- NOTE: Use guards for checking values and do conditions
 
 
