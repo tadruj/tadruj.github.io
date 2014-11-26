@@ -158,6 +158,9 @@ matchTwoOrMore (x:y:_) = (x,y)
 -- stringLength :: (Num b) => [a] -> b
 stringLength [] = 0
 stringLength (_:tail) = 1 + length tail
+sum' :: (Num a) => [a] -> a  
+sum' [] = 0  
+sum' (x:xs) = x + sum' xs  
 
 -- Guards
 
