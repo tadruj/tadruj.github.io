@@ -32,4 +32,9 @@ type annotation - A way of explicitly saying of what the type an expression shou
 
 destructuring - putting stuff in the variable according to a pattern. Usually from tuples of arrays.
 
+parametric polymorphism - Function or a data type can be written generically so that it can handle values identically without depending on their type.
+
+algebraic data types - combinations of records and sums. OCaml
+
+pattern matching - way of simultaneously examining (switch statement) and naming (destructuring) data. OCaml
 
