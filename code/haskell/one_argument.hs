@@ -20,6 +20,6 @@ j = (+ 4) 3
 -- f takes 2 returns 9
 k = (+ ((+ 4) 3)) 2
 
--- OMG, this is just a LISP
+-- OMG, Haskell is not really a LISP, it's a giant Lambda machine
 l = (+ (+ 4) 3 ) 3 
 -- I'm going home
