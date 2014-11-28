@@ -40,4 +40,10 @@ algebraic data types - combinations of records and sums. OCaml
 
 pattern matching - way of simultaneously examining (switch statement) and naming (destructuring) data. OCaml
 
-abstraction = taking the pieces of similar code and factoring out their comonality. CIS194
+abstraction - taking the pieces of similar code and factoring out their comonality. CIS194
+
+gradual typing - the more you type the program, the more static checker can do for you
+
+generics - higher bandwidth conduit type that allows us to flow types intelligently trough a system, where plain static types will loose informations
+
+
