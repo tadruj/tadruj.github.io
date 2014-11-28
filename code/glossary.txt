@@ -2,7 +2,7 @@ Glossary
 
 LMSH - Learn me some Haskell
 
-pure functional - no side effects, no changed state anywhere
+pure functional - no side effects, no changed state anywhere = immutable, referential transparency. Benefits: equational reasoning, parallelism CIS194 #anki
 
 referential transparency (pure/dirty) - If a function is called twice with the same parameters, it's guaranteed to return the same result. It also allows you to easily deduce (and even prove) that a function is correct and then build more complex functions by gluing simple functions together. LMSH
 
@@ -28,6 +28,8 @@ Yo! - Make sure you really understand how curried functions and partial applicat
 
 #anki
 
+functional language - functions act just like any other values. ex. they can be passed and returned from functions. It's about evaluating expressions instead executing instructions. CIS194
+
 type annotation - A way of explicitly saying of what the type an expression should be.
 
 destructuring - putting stuff in the variable according to a pattern. Usually from tuples of arrays.
@@ -38,3 +40,4 @@ algebraic data types - combinations of records and sums. OCaml
 
 pattern matching - way of simultaneously examining (switch statement) and naming (destructuring) data. OCaml
 
+abstraction = taking the pieces of similar code and factoring out their comonality. CIS194
