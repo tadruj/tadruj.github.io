@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lexical Scoping
+title: Lexical Scoping - Newton's square root algorithm
 lang: scheme
 tags: scheme
 ---

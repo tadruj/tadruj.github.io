@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Recursive process
+title: Recursive process - Exponentiation
 lang: scheme
 tags: scheme
 ---
