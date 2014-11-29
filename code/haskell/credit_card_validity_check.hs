@@ -27,3 +27,15 @@ doubleEveryOther :: [Integer] -> [Integer]
 -- doubleEveryOther n = reverse' (doubleEveryOther' (reverse' n))
 doubleEveryOther = reverse' . doubleEveryOther' . reverse'
 
+-- Sum all items in the list
+sum' :: [Integer] -> Integer
+sum' [] = 0 
+sum' (n:ns) = n + (sum' ns)
+
+-- Sum digits in the list, double digits like 16 get summed up to 7
+sumDigits :: [Integer] -> Integer
+sumDigits [] = 0
+sumDigits (n:ns) = (sum' (toDigits n)) + (sumDigits ns)
+
+
+
