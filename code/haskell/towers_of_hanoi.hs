@@ -18,3 +18,15 @@ hanoi' n a b c =
     in
         step1 ++ step2 ++ step3
 
+-- implementation with let and guards
+hanoi'' :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi'' n a b c
+    | n == 0 = []
+    | otherwise = 
+        let
+            step1 = hanoi'' (n-1) a c b
+            step2 = [(a, b)]
+            step3 = hanoi'' (n-1) c b a
+        in
+            step1 ++ step2 ++ step3
+
