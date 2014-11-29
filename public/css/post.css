@@ -267,6 +267,12 @@ tbody tr:nth-child(odd) th {
   color: red;
 }
 
+.lang {
+  color: red;
+  font-size: 0.6em;
+  font-family: "Lucida Console", Monaco, monospace; 
+}
+
 .compare {
   float: left;
   width: 48%;
