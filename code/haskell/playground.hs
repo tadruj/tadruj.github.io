@@ -1,3 +1,7 @@
+-- Operators
+
+doublePi = 2 ** pi
+
 -- Function and name definitions
 
 doubleSumUs x y = doubleMe x + doubleMe y -- use other functions, even if defined after
