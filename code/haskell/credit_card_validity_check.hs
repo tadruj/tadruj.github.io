@@ -37,5 +37,8 @@ sumDigits :: [Integer] -> Integer
 sumDigits [] = 0
 sumDigits (n:ns) = (sum' (toDigits n)) + (sumDigits ns)
 
+-- Validate by dividing the sum of doubled every other digits by 10 and checking for 0 remainder
+validate :: Integer -> Bool
+validate n = (sumDigits (doubleEveryOther (toDigits n))) `mod` 10 == 0
 
 
