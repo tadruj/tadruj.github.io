@@ -1,3 +1,5 @@
+module Hanoi where
+import Debug.Trace
 -- Towers of Hanoi
 
 type Peg = String
@@ -30,3 +32,14 @@ hanoi'' n a b c
         in
             step1 ++ step2 ++ step3
 
+-- implementation with tracing
+hanoi''' :: Integer -> Peg -> Peg -> Peg -> [Move]
+hanoi''' n a b c
+    | n == 0 = trace ("guard: n = 0") []
+    | otherwise = 
+        let
+            step1 = trace ("step 1: " ++ show n ++ show a ++ show b ++ show c) $ hanoi''' (n-1) a c b
+            step2 = trace ("step 2: " ++ show n ++ show a ++ show b ++ show c) $ [(a, b)]
+            step3 = trace ("step 3: " ++ show n ++ show a ++ show b ++ show c) $ hanoi''' (n-1) c b a
+        in
+            step1 ++ step2 ++ step3
