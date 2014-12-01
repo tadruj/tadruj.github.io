@@ -64,5 +64,50 @@ listLength (x:xs) = 1 + listLength xs
 
 aLen = listLength [1,2,3,4,5] 
 
+-- New Data Types
+-- BookInfo is a type constructor
+-- Book is a value constructor
+-- They can have the same name, depending on signature/expression context we know what we're using
+data ItemInfo = Book Int String [String] 
+              | Magazine Int String [String] 
+              deriving (Show)
 
+myBook = Book 0 "Rok is functional" ["Rok F", "Rok K"]
+myMagazine = Magazine 1 "Rok is funkcionar" ["Rok K", "Rok F"]
+
+-- Type synonyms - used for readability of code
+type PID = Int
+type Name = String
+
+-- Q:Construct an algebraic data type for Polar2D and Cartesian2D
+-- x and y coordinates or lengths.
+data Cartesian2D = Cartesian2D Double Double
+                   deriving (Eq, Show)
+
+-- Angle and distance (magnitude).
+data Polar2D = Polar2D Double Double
+               deriving (Eq, Show)
+
+data Roygbiv = Red
+             | Orange
+             | Yellow
+             | Green
+             | Blue
+             | Indigo
+             | Violet
+               deriving (Eq, Show)
+
+sameColors = Green == Green
+differentColors = Yellow == Orange
+
+-- Pattern Matching
+
+myNot True  = False
+myNot False = True
+
+whatIsThis (Book num title authors) = "Book"
+whatIsThis (Magazine num title authors) = "Mag"
+whatIsTitle (Book _ title _) = title
+whatIsTitle (Magazine _ title _) = title
+publicationType = whatIsThis myBook
 
