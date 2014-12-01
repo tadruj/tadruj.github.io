@@ -1,0 +1,4 @@
+docker - a BSD chroot environment glued with git
+google closure - comment based type annotations with standard JS libary
+facebook flow = microsoft typescript for non-microsofters with a bit more
+agressive inference
