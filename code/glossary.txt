@@ -18,7 +18,7 @@ prefix function - Placed in front of arguments. LMSH
 
 homogenous data structure -  Stores several elements of the same type only. LMSH
 
-polymorphic functions - Functions that have type variables are called. LMSH
+polymorphic functions - Functions that have type variables. LMSH #anki
 
 typeclass - is an interface that defines some behavior. If a type is a part of a typeclass, that means that it supports and implements the behavior the typeclass describes. LMSH
 
@@ -60,4 +60,10 @@ side effect - dependency between the global state of the system and the behaviou
 
 strict evaluation - the arguments to a function are evaluated before the function is applied
 lazy evaluation - we create a thunk (record that we use to track an unevaluated expression), and defer the actual evaluation (promise) until it's really needed. If the result of this expression is never subsequently used, we will not compute its value at all.
+
+subtype polymorphism - A base class defines a set of behaviours that its subclasses can modify and extend.
+
+coarcion polymorphism - allows a value of one type to be implicitly converted into a value of another type.
+
+polymorphic type - parameterised type - type that contains type parameters/variables a -> a
 
