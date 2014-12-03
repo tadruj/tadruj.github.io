@@ -111,3 +111,26 @@ whatIsTitle (Book _ title _) = title
 whatIsTitle (Magazine _ title _) = title
 publicationType = whatIsThis myBook
 
+-- Record Syntax
+
+data Shape = 
+    Circle {
+        shapeName :: String,
+        circleRadius :: Int
+        }
+    |
+    Square {
+        shapeName :: String,
+        shapeSide :: Int
+        }
+    deriving (Show)
+
+myCircle = Circle "Gran'ole'Circle" 3
+mySquare = Square "Times Square" 4
+
+myCircleName = shapeName myCircle
+mySquareName = shapeName mySquare
+
+shapeArea :: Shape -> Float
+shapeArea (Circle _ r) = pi * (fromInteger (toInteger r)) ** 2
+shapeArea (Square _ a) = (fromInteger (toInteger a)) ** 2
