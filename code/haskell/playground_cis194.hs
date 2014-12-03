@@ -134,3 +134,21 @@ mySquareName = shapeName mySquare
 shapeArea :: Shape -> Float
 shapeArea (Circle _ r) = pi * (fromInteger (toInteger r)) ** 2
 shapeArea (Square _ a) = (fromInteger (toInteger a)) ** 2
+
+-- Patameterised types
+
+-- data Maybe a = Just a
+--             | Nothing
+
+someBool = Just True
+someString = Just "something"
+
+-- non-homogeneous list implementation
+data ThisOrThat = TString String
+                | TBool Bool
+                deriving (Show)
+
+namez = (TBool False):(TString "Rok"):[] :: [ThisOrThat]
+
+
+
