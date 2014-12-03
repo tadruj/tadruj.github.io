@@ -18,5 +18,15 @@ sumOfN n =
         in
             (sumOfN (n - (oper n))) ++ [(sum [0..(abs n)]) * (oper n)]
 
-main = putStrLn (show (sumOfN 7))
+-- signum function is already a part of Haskell
+sumOfN'' :: Int -> [Int]
+sumOfN'' 0 = [0]
+sumOfN'' n = (sumOfN'' (n - (signum n))) ++ [(sum [0..(abs n)]) * (signum n)]
 
+main = let
+        a = (show (sumOfN 7)) ++ " "
+        b = (show (sumOfN'' 7)) ++ " "
+        c = (show (sumOfN (-7))) ++ " "
+        d = (show (sumOfN'' (-7))) ++ " "
+       in
+        putStrLn (a ++ b ++ c ++ d)
