@@ -1,3 +1,16 @@
+*** iTerm ***
+
+CMD-ENTER = iTERM full screen
+CMD-# = Switch to tab #
+CMD-t = New tab
+CMD-d = Split Vertically
+CMD-SHIFT-d = Split Horizontaly
+
+*** vim ***
+
+:!ls -al
+\mk = run current program
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   1. The cursor is moved using either the arrow keys or the hjkl keys.
