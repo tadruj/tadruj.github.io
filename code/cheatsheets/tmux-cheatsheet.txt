@@ -1,0 +1,8 @@
+tmux
+tmux attach
+
+^A C = Create window
+^A arrows = Navigate
+^A " = horizontal split
+^A % = vertical split
+
