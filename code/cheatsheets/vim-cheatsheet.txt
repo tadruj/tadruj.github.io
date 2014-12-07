@@ -10,6 +10,12 @@ CMD-SHIFT-d = Split Horizontaly
 
 :!ls -al
 \mk = run current program
+\c <space> = toggle comment
+:make = run compiler
+
+dd = cut line or visually selected text with v
+yy = copy line or ^
+P = paste text before / p = after
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
