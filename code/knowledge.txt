@@ -17,3 +17,18 @@ polymorphic function takes different types or arguments [a] -> [a]
 
 In language like Haskell, where you have to think how will you convert from integer to float, you are not left with enough of brain power to think about higher level concepts.
 
+OCaml
+
+we didn't get rid of Currying from Haskell :{
+OCaml requires that both branches of an if statement have the same type
+
+Basis of functional programming are really higher order functions, static
+typing, algebraic datatypes and pattern matching.
+
+Racket is a typed Scheme
+
+Haskel has too much other stuff like lazy evaluation and monads
+
+
+
+
