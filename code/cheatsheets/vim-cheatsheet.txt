@@ -17,6 +17,23 @@ dd = cut line or visually selected text with v
 yy = copy line or ^
 P = paste text before / p = after
 
+*** typescript tools ***
+
+C-] = definition
+
+  map <buffer> _?  :TSStype<cr>
+  " :TSSsymbol
+  map <buffer> _?? :TSSbrowse<cr>
+  " :TSSreferences
+  map <buffer> <C-t>s :TSSstructure<cr>
+  map <buffer> <C-t>u :TSSupdate<cr>
+  map <buffer> <C-t>e :TSSshowErrors<cr>
+  map <buffer> <C-t>p :TSSfilesMenu<cr>
+  map <buffer> <C-t>f :TSSfile
+  " :TSSfiles
+  map <buffer> <C-t>r :TSSreload<cr>
+
+
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   1. The cursor is moved using either the arrow keys or the hjkl keys.
