@@ -69,3 +69,7 @@ coarcion polymorphism - allows a value of one type to be implicitly converted in
 
 polymorphic type - parameterised type - type that contains type parameters/variables a -> a
 
+labeled arguments - when you can pass arguments based on their name not just
+order.
+
+
