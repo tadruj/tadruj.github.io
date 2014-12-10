@@ -62,10 +62,10 @@ let deduped_tuples' = dedup' [1,2,3;1,2,3;3,4,5;6,7,8;6,7,8]
 let divide x y =
     if y = 0 then None else Some (x/y)
 
-let array_of_some_stuff = [|None;None;Some 1;None;Some 5;None|]
-let array_of_some_stuff' = [|Some "English";None;Some "Dutch"|]
+let list_of_some_stuff = [None;None;Some 1;None;Some 5;None]
+let list_of_some_stuff' = [Some "English";None;Some "Dutch"]
 
-(*Q: Function filters trough and array of options for valid options*)
+(*Q: Function filters trough a list of options for valid options*)
 let rec filter_valid_languages languages = 
     match languages with
         | [] -> []
@@ -99,6 +99,7 @@ let magnitude' point =
 
 let some_magnitude = magnitude {x=2.;y=3.}
 
+(* Q: Write a function that calculates distance between two points *)
 let distance start finish =
     magnitude {x=start.x -. finish.x; y=start.y -. start.y}
 
@@ -140,4 +141,3 @@ let point5 = {x=5.;y=5.}
 let scene1 = [(Circle {center={x=2.;y=2.};radius=1.});(Rectangle {lower_left={x=2.;y=2.};width=2.;height=2.})]
 
 let frka = List.map ~f:(fun point -> is_point_inside_scene point scene1) [point1;point2;point3;point4;point5]
-
