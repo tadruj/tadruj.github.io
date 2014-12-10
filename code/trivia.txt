@@ -1,0 +1,66 @@
+Trivia
+
+In strict evaluation langauges the arguments get eveluated first and then functions get applied.
+
+In lazy languages, all the functions are applied and promises are being created and then arguments get evaluated.
+
+In lazy evaluation you're writing a program, which creates a program to evaluate. So it's kind of meta programming from the start. You set the execution start conditions with a right pattern match or a guard and this is how you actually start the execution.
+
+The guards and patterns get evaluated with priority to direct the flow of the program and they are the basic tools to meta program.
+
+The best way to learn functional programming is to stick with your language and do programming without side effects. Or not take a language, where you have to take care of lazy evaluation too. It's two different concepts and learning both of the at the same time is a bad idea.
+
+type signature = type declaration = fun Num a => a -> a -> a
+function expression fun x = x+1
+
+polymorphic function takes different types or arguments [a] -> [a]
+
+In language like Haskell, where you have to think how will you convert from integer to float, you are not left with enough of brain power to think about higher level concepts.
+
+OCaml
+
+we didn't get rid of Currying from Haskell :{
+OCaml requires that both branches of an if statement have the same type
+
+Basis of functional programming are really higher order functions, static
+typing, algebraic datatypes and pattern matching.
+
+Racket is a typed Scheme
+
+Haskel has too much other stuff like lazy evaluation and monads
+
+An immutable piece of data is one that cannot be changed. Some languages, like
+Clojure, make all values immutable by default. Any “mutating” operations copy
+the value, change it and pass back the changed copy. This eliminates bugs that
+arise from a programmer’s incomplete model of the possible states their
+program may enter. 
+
+Languages that support first class functions allow functions to be treated
+like any other value. This means they can be created, passed to functions,
+returned from functions and stored inside data structures.
+ 
+Tail call optimisation is a programming language feature. Each time a function
+recurses, a new stack frame is created. A stack frame is used to store the
+arguments and local values for the current function invocation. If a function
+recurses a large number of times, it is possible for the interpreter or
+compiler to run out of memory. Languages with tail call optimisation reuse the
+same stack frame for their entire sequence of recursive calls. Languages like
+Python that do not have tail call optimisation generally limit the number of
+times a function may recurse to some number in the thousands. In the case of
+the race() function, there are only five time steps, so it is safe.
+ 
+Currying means decomposing a function that takes multiple arguments into a
+function that takes the first argument and returns a function that takes the
+next argument, and so forth for all the arguments.
+ 
+Parallelization means running the same code concurrently without
+synchronization. These concurrent processes are often run on multiple
+processors. 
+
+Lazy evaluation is a compiler technique that avoids running code until the
+result is needed.
+ 
+A process is deterministic if repetitions yield the same result every time.
+
+
+
