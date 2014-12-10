@@ -1,15 +1,5 @@
-let square x = x * x
+open Printf
 
-let ratio x y = 
-    Float.of_int x /. Float.of_int y
-;;
-
-let isMoreThanOne test x y =
-    if test x y > 1. then true else false
-;; 
-
-let isMoreThanOneAnnotated (test : int -> int -> float) (x : int) (y : int) =
-    if test x y > 1. then true else false
-;; 
-
-
+let () =
+    let name = if (Array.length Sys.argv) > 1 then Sys.argv.(1) else "Noname"
+    in printf "Hello %s\n" name
