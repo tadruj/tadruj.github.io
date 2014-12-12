@@ -1,8 +1,8 @@
 (* install MParser with: opam install mparser *)
 #require "core"
-#require "mparser"
-open MParser
 open Core.Std
+#require "mparser" (* Warning: MParser overwrites Core.Std parser combinator *)
+open MParser
 
 let symbol = any_of "!#$%&|*+-/:<=>?@^_~"
 
@@ -15,33 +15,6 @@ type lispVal =
 	| Number of int
 	| String of string
 	| Bool of bool
-
-let (>>=) p f s =
-  match p s with
-    | Empty_failed e1 -> Empty_failed e1
-    | Consumed_failed e1 -> Consumed_failed e1
-    | Empty_ok (r1, s1, e1) ->
-        ( match f r1 s1 with
-            | Empty_failed e2 -> Empty_failed (merge_errors e2 e1)
-            | Empty_ok (r2, s2, e2) -> Empty_ok (r2, s2, merge_errors e2 e1)
-            | consumed -> consumed )
-    | Consumed_ok (r1, s1, e1) ->
-        ( match f r1 s1 with
-            | Empty_failed e2 -> Consumed_failed (merge_errors e2 e1)
-            | Empty_ok (r2, s2, e2) -> Consumed_ok (r2, s2, merge_errors e2 e1)
-            | consumed -> consumed )
-
-let (>>) p q =
-  p >>= fun _ -> q
-
-let (<|>) p1 p2 s =
-  match p1 s with
-    | Empty_failed e1 ->
-        ( match p2 s with
-            | Empty_failed e2 -> Empty_failed (merge_errors e2 e1)
-            | Empty_ok (r2, s2, e2) -> Empty_ok (r2, s2, (merge_errors e2 e1))
-            | consumed -> consumed )
-    | other -> other
 
 let parseString = MParser.char '"' 
 	>> (MParser.many (MParser.none_of "\"")) 
