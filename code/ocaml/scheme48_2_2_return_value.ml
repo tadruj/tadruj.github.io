@@ -1,7 +1,7 @@
 (* install MParser with: opam install mparser *)
 #require "core"
 open Core.Std
-#require "mparser" (* Warning: MParser overwrites Core.Std parser combinator *)
+#require "mparser" (* Warning: MParser overwrites Core.Std parser combinator <|> *)
 open MParser
 
 let symbol = any_of "!#$%&|*+-/:<=>?@^_~"
@@ -18,7 +18,8 @@ type lispVal =
 
 let parseString = MParser.char '"' 
 	>> (MParser.many (MParser.none_of "\"")) 
-	>>= (fun t -> MParser.char '"' >> return (String (String.of_char_list t)))
+	>>= (fun t -> MParser.char '"' 
+		>> return (String (String.of_char_list t)))
 
 let parseAtom = 
 	(MParser.letter <|> symbol) >>= fun first ->
@@ -29,7 +30,10 @@ let parseAtom =
 		| "#f" -> Bool false
 		| _ -> Atom atom)
 
-let parseExpr = parseAtom <|> parseString
+let parseNumber = MParser.many1 MParser.digit 
+	>>= (fun digits -> return (Number (Int.of_string (String.of_char_list digits))))
+
+let parseExpr = parseAtom <|> parseString <|> parseNumber
 
 let readExpr input = match parse_string parseExpr input () with
 	| Success r -> "Found value: " ^ (match r with
@@ -37,6 +41,7 @@ let readExpr input = match parse_string parseExpr input () with
 		|(Atom s) -> "Atom: " ^ s
 		|(Bool true) -> "Bool: True"
 		|(Bool false) -> "Bool: False"
+		|(Number n) -> "Number: " ^ string_of_int n
 		|(_) -> "other")
 	| Failed (msg, e) -> "No match on: " ^ input ^ ": " ^ msg
 
