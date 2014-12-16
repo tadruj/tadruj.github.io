@@ -1,0 +1,56 @@
+// corebuild version
+{
+	"cmd": ["corebuild ${file_base_name}.byte -pkg core_bench"],
+	"file_regex": "[ ]*File \"(...*?)\", line ([0-9]*)",
+	"working_dir": "${file_path}",
+	"selector": "source.ml",
+	"shell": true,
+	"path": "/bin:/usr/bin:/usr/local/bin::/Users/rok/.opam/system/bin:",
+	"env": {
+		"CAML_LD_LIBRARY_PATH":"/Users/rok/.opam/system/lib/stublibs:/usr/local/lib/ocaml/stublibs",
+	},
+	"variants":
+	[
+		{
+			"name": "Run",
+			"cmd": ["corebuild ${file_base_name}.native -pkg core_bench && ${file_base_name}.native"],
+		}
+	]
+}
+
+// // ocamlc version
+// {
+// 	"cmd": ["ocamlc -c -annot -o ${file_path}/${file_base_name} ${file} && rm -f ${file_path}/${file_base_name}.cmi ${file_path}/${file_base_name}.cmo"],
+// 	"file_regex": "[ ]*File \"(...*?)\", line ([0-9]*)",
+// 	"working_dir": "${file_path}",
+// 	"selector": "source.ml",
+// 	"shell": true,
+// 	"path": "/bin:/usr/bin:/usr/local/bin:~/bin",
+// 	"variants":
+// 	[
+// 		{
+// 			"name": "Run",
+// 			"cmd": ["ocamlc '${file}' -o '${file_path}/${file_base_name}' && rm -f ${file_path}/${file_base_name}.cmi ${file_path}/${file_base_name}.cmo && '${file_path}/${file_base_name}'"]
+// 		}
+// 	]
+// }
+
+// // utop version
+// {
+// 	"cmd": [
+// 		"utop_ld '${file_name}' && rm -fr '${file_path}/_build'"
+// 	],
+// 	"file_regex": "[ ]*File \"(...*?)\", line ([0-9]*)",
+// 	"working_dir": "${file_path}",
+// 	"selector": "source.ml",
+// 	"shell": true,
+// 	"path": "/usr/local/bin:/Users/rok/.opam/system/bin/:~/bin:$PATH:",
+// 	"variants": [
+// 		{
+// 			"name": "Run",
+// 			"cmd": [
+// 				"utop_ld -dparsetree '${file_name}' && rm -fr '${file_path}/_build'"
+// 			]
+// 		}
+// 	]
+// }
