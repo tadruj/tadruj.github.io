@@ -72,4 +72,9 @@ polymorphic type - parameterised type - type that contains type parameters/varia
 labeled arguments - when you can pass arguments based on their name not just
 order.
 
+partial application - practice of applying some arguments of a curried function and geting new function as a result
+
+recursive function - function is recursive if it refers to itself in its definition. In functional programming, recursive functions are used to create looping constructs. RWO
+
+labelled arguments - arguments that don't need a special order to be passed to a function, but a name instead or a mix (OCaml beauty)
 
