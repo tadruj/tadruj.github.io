@@ -78,3 +78,20 @@ recursive function - function is recursive if it refers to itself in its definit
 
 labelled arguments - arguments that don't need a special order to be passed to a function, but a name instead or a mix (OCaml beauty)
 
+data abstraction - mechanism for hiding the implementation details of data http://www.cs.utexas.edu/~wcook/Drafts/2009/essay.pdf
+
+abstract data type (ADT) - has a public name, a hidden representation, and operations to create, combine, and observe values of the abstraction
+
+object - a value exporting a procedural interface to data or behavior. Objects use procedural abstraction for information hiding, not type abstraction. They can be closures, first-class modules, records of functions, or processes. Objects are fundamentally higher-order and you are never quite certain what it is going to do. Unlike ADT.
+
+procedural abstraction - defines procedures and hides information
+
+type abstraction - defines algebra
+
+Objects vs. ADTs - Objects are extensible, ADTs are easily verifiable. Designing anything provable and composable calls for ADTs. Anything non-optimizable like drivers, graphics are ok with Objects. Classes are used for creating objects and interfaces are used for types.
+
+Program analysis - algorithms for discovering facts about the behavior of programs (which variables are constant, whether null pointer errors can occur)
+
+Static analysis - trying to attain complete coverage of the program: using special algorithms to analyze the behavior over all possible inputs.
+
+Dynamic analysis - testing. Run program on test cases and observe the behavior. Cannot prove that an optimization is safe or that a program is free of some class of security flaws.
