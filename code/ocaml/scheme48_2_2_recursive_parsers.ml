@@ -1,10 +1,7 @@
-(* Fails with: Exception: Lazy.Undefined. *)
-
 (* install MParser with: opam install mparser *)
-(* #require "core" *)
+#require "core"
 open Core.Std
-(* #require "mparser"  *)
-(* Warning: MParser overwrites Core.Std parser combinator <|> *)
+#require "mparser" (* Warning: MParser overwrites Core.Std parser combinator <|> *)
 open MParser
 (* open Lazy *)
 
@@ -38,14 +35,14 @@ let parseNumber = MParser.many1 MParser.digit
 	>>= (fun digits -> return (Number (Int.of_string (String.of_char_list digits))))
 
 let rec parseExpr = lazy (
-	parseAtom <|> parseString <|> parseNumber <|> (force parseList)
+	parseAtom <|> parseString <|> parseNumber <|> (Lazy.force parseList)
 )
 and parseList = lazy (
-	MParser.sep_by (force parseExpr) spaces'
+	MParser.sep_by (Lazy.force parseExpr) spaces'
 	>>= (fun l -> return (List l))
 )
 
-let readExpr input = match parse_string (force parseExpr) input () with
+let readExpr input = match parse_string (Lazy.force parseExpr) input () with
 	| Success r -> "Found value: " ^ (match r with
 		|(String s) -> "String: " ^ s
 		|(Atom s) -> "Atom: " ^ s
