@@ -1,0 +1,5 @@
+cljs-cheatsheet
+
+lein new mies-om hello-world
+lein cljsbuild auto
+python -m SimpleHTTPServer
