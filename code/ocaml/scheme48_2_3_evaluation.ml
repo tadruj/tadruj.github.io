@@ -14,24 +14,21 @@ type lispVal =
 	| String of string
 	| Bool of bool
 
-let parseString:(lispVal, unit) MParser.t =
-	MParser.char '"' 
-	>> (MParser.many (MParser.none_of "\"")) 
-	>>= (fun t -> MParser.char '"' 
-		>> return (String (String.of_char_list t)))
+let parseString:(lispVal, unit) MParser.t =	MParser.char '"' 
+	>> MParser.many @@ MParser.none_of "\"" 
+	>>= fun s -> MParser.char '"' 
+		>> return @@ String (String.of_char_list s)
 
-let parseAtom:(lispVal, unit) MParser.t =
-	(MParser.letter <|> symbol) >>= fun first ->
-	MParser.many (MParser.letter <|> MParser.digit <|> symbol) >>= fun last ->
-	let atom = String.of_char first ^ String.of_char_list last in
-	return (match atom with
-		| "#t" -> Bool true
-		| "#f" -> Bool false
-		| _ -> Atom atom)
+let parseAtom:(lispVal, unit) MParser.t = (MParser.letter <|> symbol) 
+	>>= fun first -> MParser.many (MParser.letter <|> MParser.digit <|> symbol) 
+		>>=	fun last ->	let atom = String.of_char first ^ String.of_char_list last in
+			return @@ match atom with
+				| "#t" -> Bool true
+				| "#f" -> Bool false
+				| _ -> Atom atom
 
-let parseNumber:(lispVal, unit) MParser.t =
-	MParser.many1 MParser.digit 
-	>>= (fun digits -> return (Number (Int.of_string (String.of_char_list digits))))
+let parseNumber:(lispVal, unit) MParser.t =	MParser.many1 MParser.digit 
+	>>= fun digits -> return @@ Number (Int.of_string @@ String.of_char_list digits)
 
 let rec parseExpr:(lispVal, unit) MParser.t lazy_t = lazy (
 	parseAtom
@@ -39,19 +36,18 @@ let rec parseExpr:(lispVal, unit) MParser.t lazy_t = lazy (
 	<|> parseNumber
 	<|> force parseList
 ) and parseList = lazy (
-	(MParser.char '(' 
-		>>= (fun _ -> MParser.sep_by (force parseExpr) spaces' >>= (fun l -> return (List l)))
-		>>= (fun item -> MParser.char ')' >> return item)
-	)
+	MParser.char '(' 
+	>>= fun _ -> MParser.sep_by (force parseExpr) spaces' >>= fun l -> List l |> return
+	>>= fun item -> MParser.char ')' >> return item
 )
 
 let rec showVal:lispVal -> bytes = function
-		|(String s) -> "\"" ^ s ^ "\""
-		|(Atom s) -> s
-		|(Bool true) -> "#t"
-		|(Bool false) -> "#f"
-		|(Number n) -> string_of_int n
-		|(List l) -> "(" ^ unwordList l ^ ")"
+	| String s -> "\"" ^ s ^ "\""
+	| Atom s -> s
+	| Bool true -> "#t"
+	| Bool false -> "#f"
+	| Number n -> string_of_int n
+	| List l -> "(" ^ unwordList l ^ ")"
 and unwordList (list:lispVal list):bytes = List.map ~f:(fun item -> showVal item) list |> String.concat ~sep:" "
 
 let readExpr (input:bytes):lispVal = match parse_string (force parseExpr) input () with
@@ -72,17 +68,15 @@ let primitives = function
 	| "*" -> numericOp ( * )
 	| "/" -> numericOp (/)
 	| "%" -> numericOp (mod)
-	| _ -> (fun _ -> raise (Invalid_argument "Unknown operation"))
+	| _ -> fun _ -> Invalid_argument "Unknown operation" |> raise
 
 let apply (func:bytes) (args:lispVal list):lispVal =
 	primitives func args
 
 let rec eval:(lispVal -> lispVal) = function
-	| (List (Atom func :: args)) -> apply func (List.map ~f:(eval) args)
+	| (List (Atom func :: args)) -> apply func @@ List.map ~f:(eval) args
 	| v -> v
 
 let () =
 	let args = Sys.argv in
-    print_string (showVal (eval @@ readExpr args.(1)) ^ "\n");
-
-
+    showVal (eval @@ readExpr args.(1)) ^ "\n" |> print_string
