@@ -44,8 +44,6 @@ let rec parseExpr:(lispVal, unit) MParser.t lazy_t = lazy (
 let rec showVal:lispVal -> bytes = function
 	| String s -> "\"" ^ s ^ "\""
 	| Atom s -> s
-	| Bool true -> "#t"
-	| Bool false -> "#f"
 	| Number n -> string_of_int n
 	| List l -> "(" ^ unwordList l ^ ")"
 and unwordList (list:lispVal list):bytes = List.map ~f:(fun item -> showVal item) list |> String.concat ~sep:" "
