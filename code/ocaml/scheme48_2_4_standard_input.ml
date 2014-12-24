@@ -58,7 +58,7 @@ let readExpr (input:bytes):lispVal = match parse_string (force parseExpr) input 
 let rec unpackNum = function
 	| Number n -> n
 	| List [n] -> unpackNum n
-	| _ -> raise (Invalid_argument ("unpackNum: Not a number or list of numbers")) 0
+	| _ -> raise (Invalid_argument ("unpackNum: Not a number or list of numbers"))
 
 let numOp (op:int -> int -> int) (params:lispVal list):lispVal = 
 	Number (match (List.reduce ~f:(op) (List.map ~f:(unpackNum) params)) with None -> 0|Some n -> n)
