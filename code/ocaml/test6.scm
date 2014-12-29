@@ -1,0 +1,1 @@
+(eq? (cons "black" (cons "banana" null)) (cons "yellow" (cons "banana" null)))

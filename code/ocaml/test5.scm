@@ -1,0 +1,1 @@
+(eq? (car (cons 1 (cons 2 (cons 3 (cons 4 null))))) (car (cdr (cdr (cdr (cons 4 (cons 3 (cons 2 (cons 1 null)))))))))

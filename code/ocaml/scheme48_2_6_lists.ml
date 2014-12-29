@@ -76,7 +76,7 @@ let eqv:(lispVal list -> lispVal) = function
 	| [Number arg1; Number arg2] -> Bool (arg1 = arg2)
 	| [String arg1; String arg2] -> Bool (arg1 = arg2)
 	| [Atom arg1; Atom arg2] -> Bool (arg1 = arg2)
-	| [List arg1; List arg2] -> Bool (List.length arg1 = List.length arg2)
+	| [List arg1; List arg2] -> Bool (List.length arg1 = List.length arg2) (* TODO *)
 	| [_;_] -> Bool false
 	| _ -> raise (Invalid_argument ("eqv: Number of arguments"))
 
