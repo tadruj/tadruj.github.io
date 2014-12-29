@@ -66,8 +66,19 @@ let cdr:(lispVal list -> lispVal) = function
 	| _ -> raise (Invalid_argument ("cdr: Number of arguments"))
 
 let cons:(lispVal list -> lispVal) = function
-	| [x1; List []] -> List [x1]
-	| _ -> Number 0
+	| [x; List []] -> List [x]
+	| [x; List xs] -> List (x :: xs)
+	| [x; Atom "null"] -> List [x]
+	| _ -> raise (Invalid_argument ("cons: Number of arguments"))
+
+let eqv:(lispVal list -> lispVal) = function
+	| [Bool arg1; Bool arg2] -> Bool (arg1 = arg2)
+	| [Number arg1; Number arg2] -> Bool (arg1 = arg2)
+	| [String arg1; String arg2] -> Bool (arg1 = arg2)
+	| [Atom arg1; Atom arg2] -> Bool (arg1 = arg2)
+	| [List arg1; List arg2] -> Bool (List.length arg1 = List.length arg2)
+	| [_;_] -> Bool false
+	| _ -> raise (Invalid_argument ("eqv: Number of arguments"))
 
 let rec unpackNum = function
 	| Number n -> n
@@ -110,6 +121,11 @@ let primitives = function
 	| "string>?" -> boolOp unpackString (>)
 	| "string<=?" -> boolOp unpackString (<=)
 	| "string>=?" -> boolOp unpackString (>=)
+	| "car" -> car
+	| "cdr" -> cdr
+	| "cons" -> cons
+	| "eq?" -> eqv
+	| "eqv?" -> eqv
 	| _ -> fun _ -> Invalid_argument "Unknown operation" |> raise
 
 let apply (func:bytes) (args:lispVal list):lispVal =
