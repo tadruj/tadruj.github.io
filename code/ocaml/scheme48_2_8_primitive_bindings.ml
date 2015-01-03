@@ -92,7 +92,6 @@ let cdr:(lispVal list -> lispVal) = function
 let cons:(lispVal list -> lispVal) = function
 	| [x; List []] -> List [x]
 	| [x; List xs] -> List (x :: xs)
-	| [x; Atom "null"] -> List [x]
 	| _ -> raise (Invalid_argument ("cons: Number of arguments"))
 
 let eqv:(lispVal list -> lispVal) = function
@@ -162,7 +161,6 @@ let apply (func:lispVal) (args:lispVal list):lispVal =
 		| PrimitiveFunc func -> func args
 
 let rec eval (env:lispEnv ref) (expr:lispVal):lispVal =
-	(* | List ((Atom "if") :: predicate :: consequence :: alternative :: _) -> *)
 	match expr with
 		| Atom name -> getVar env name
 		| List [Atom "if"; predicate; consequence; alternative] ->
