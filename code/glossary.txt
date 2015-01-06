@@ -95,3 +95,10 @@ Program analysis - algorithms for discovering facts about the behavior of progra
 Static analysis - trying to attain complete coverage of the program: using special algorithms to analyze the behavior over all possible inputs.
 
 Dynamic analysis - testing. Run program on test cases and observe the behavior. Cannot prove that an optimization is safe or that a program is free of some class of security flaws.
+
+type - a name for collection of values
+
+
+
+
+
