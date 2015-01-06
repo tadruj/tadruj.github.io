@@ -1,0 +1,3 @@
+Build inferred mli with MParser:
+
+corebuild -use-ocamlfind -pkgs mparser scheme48_2_2_recursive_parsers_without_lazy_exception.inferred.mli

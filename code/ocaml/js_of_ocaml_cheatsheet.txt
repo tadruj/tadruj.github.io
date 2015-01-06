@@ -1,0 +1,5 @@
+ocamlfind ocamlc -linkpkg -package mparser,re.pcre u3.ml -o u3.byte
+js_of_ocaml +weak.js u3.byte
+
+ocamlfind ocamlc -linkpkg -package mparser,re.pcre,js_of_ocaml,js_of_ocaml.syntax -syntax camplp4o -o u3.byte u3.ml
+
