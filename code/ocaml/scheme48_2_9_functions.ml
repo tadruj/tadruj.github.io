@@ -183,11 +183,9 @@ let rec eval (env:lispEnv ref) (expr:lispVal):lispVal =
 			makeNormalFunc env params body
 			|> setVar env name
 			|> fun _ -> getVar env name
-			(* eval env (List (Atom "lambda" : List params : body)) = *)
-			(* makeNormalFunc env params body *)
 		| List ((Atom "lambda") :: List params :: body) -> 
 			makeNormalFunc env params body
- 		| List (func :: args) -> apply (eval env func) @@ List.map ~f:(eval env) args
+ 		| List (func :: args) -> apply (eval env func) @@ List.map ~f:(eval env) args (* pull out primitives @@ transform args into lispVal-s *)
 		| v -> v
 and apply (func:lispVal) (args:lispVal list):lispVal =
 	match func with
@@ -201,7 +199,7 @@ and apply (func:lispVal) (args:lispVal list):lispVal =
 						| None -> env
 						| Some argName -> bindVars env [( argName, List (List.drop args (List.length _params)) )]
 				and evalBody env = 
-					List.last_exn (List.map ~f:(eval env) _body)
+					List.last_exn (List.map ~f:(eval (ref (List.slice !env 0 0))) _body)
 				in
 					bindVars _closure (List.zip_exn _params args) 
 					|> bindVarArgs _vararg
