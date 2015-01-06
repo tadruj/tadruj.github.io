@@ -185,7 +185,7 @@ let rec eval (env:lispEnv ref) (expr:lispVal):lispVal =
 			|> fun _ -> getVar env name
 		| List ((Atom "lambda") :: List params :: body) -> 
 			makeNormalFunc env params body
- 		| List (func :: args) -> apply (eval env func) @@ List.map ~f:(eval env) args (* pull out primitives @@ transform args into lispVal-s *)
+ 		| List (func :: args) -> apply (eval env func) @@ List.map ~f:(eval env) args
 		| v -> v
 and apply (func:lispVal) (args:lispVal list):lispVal =
 	match func with
