@@ -98,7 +98,9 @@ Dynamic analysis - testing. Run program on test cases and observe the behavior. 
 
 type - a name for collection of values
 
-monad - a pattern that allows functions to stay pure. It achieves this by treating functions as functions and not values and then do the evaluation part outside of the purely functional environment. Like IO.
+monad - a functional pattern(abstract data type) that allows functions to stay pure. It achieves this by treating functions as functions and not values and then do the evaluation part outside of the purely functional environment. Like IO.
 
+monkey patch - override global functions or methds of basic objects or primitives
 
+decoration - add functionality to an object by wraping it up inside another object
 
