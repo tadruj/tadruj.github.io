@@ -120,8 +120,7 @@ console.log('associative equals: ', // chaining is the same as nesting
 // Random monad - it generates the random number based on the seed, which is passed along
 
 function random(seed) { // pure random function which always returns the same random number for the same seed
-    var x = Math.sin(seed + 1) * 10000;
-    return x - Math.floor(x);
+	return (function(x) { return x - Math.floor(x) })(Math.sin(seed + 1) * 10000);
 }
 
 // TODO: have to check this for independant lift
