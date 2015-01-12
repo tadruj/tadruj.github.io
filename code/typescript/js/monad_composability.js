@@ -1,4 +1,5 @@
-// Null monad - the monad that doesn't need to be used, because we're already using it with pure functions.
+// Identity monad - the monad that doesn't need to be used, because we're already using it with pure functions.
+// https://hackage.haskell.org/package/mtl-1.1.0.2/docs/Control-Monad-Identity.html
 
 function compose(f, g) {
 	return function(x) {
@@ -50,7 +51,6 @@ console.log('associative equals: ', // chaining is the same as nesting
 	bind(function(x) { return bind(increment)(multiply(x)) })(unit(3))	// bind(m, x ⇒ bind(f(x), g)) ==> :)
 );
 
-
 // Writer monad - it collects logging data as the functions execute
 
 // number -> [number, list]
@@ -96,6 +96,14 @@ function wLift(f) {
 
 var wAsine = wLift(Math.cos)
 var t10 = compose(wBind(wAsine), wBind(wSine)); console.log('t10: ', t10(wUnit(0)));
+
+console.log('=======');
+console.log('',
+	compose(wLift, wBind(wUnit)),
+	'====',
+	wUnit(1)
+);
+console.log('=======');
 
 // Proving the Writer monad
 
@@ -191,6 +199,17 @@ console.log('associative equals: ', // chaining is the same as nesting
 	rBind(function(x) { return rBind(rRandom)(rRandom(x)) })(rUnit(3)) 	// bind(m, x ⇒ bind(f(x), g)) ==> :)
 );
 
+var composeMulti = function() {
+    var funcs = arguments;
+    return function() {
+        var args = arguments;
+        for (var i = funcs.length; i--; i == 0) {
+            args = [funcs[i].apply(this, args)];
+        }
+        return args[0];
+    };
+};
+
 // Mixing monads
 
 var rIncrement = rLift(increment)
@@ -201,26 +220,9 @@ console.log(
 );
 
 // TODO:
-// Loose compose
+// Loose compose or let it return a function
 // Do more mix and match of different monads
 // Implement few in OCaml
 // Implement few in TypeScript
 
-// Comments:
-// 
-// The goal is to have all the functionality wired up
-// not necessarily capturing all the side effects if we don't want to be pure
-// and at the end applying the function and collecting the value and optionally side effects
-// all the functions have to return immediately, so they start with return. No sequencing. = functional
-// you need to be able to compose funtions in arbitrary order and still preserve side effect passing
-// you need to be passing sideeffects along the way from beginning to the end
-// it's like going from time domain to (complex) frequency domain with fourrier transforms or (laplace transform)
-// 		we don't deal with values any more but with functions
-// 		the final function that we produce, we feed values and get a value back as a result
-// Pure languages, such as Miranda0 and Haskell, are lambda calculus pure and simple  http://homepages.inf.ed.ac.uk/wadler/papers/marktoberdorf/baastad.pdf
-// Original paper: http://www.cs.cmu.edu/~crary/819-f09/Moggi89.pdf
 
-// Problem
-// Note that monads let you do more than handle side-effects, in particular many types of container object can be viewed as monads
-// Modularity: by defining an operation monadically, we can hide underlying machinery in a way that allows new features to be incorporated into the monad transparently = https://www.haskell.org/tutorial/monads.html
-// https://github.com/raimohanska/Monads
