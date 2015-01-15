@@ -9,12 +9,14 @@ import System.Random
 import Control.Monad.State
 
 main =
-		getLine >>= (readMaybe >>> return) >>= (liftM sin >>> return) >>= (fromJust >>> return) >>= print
+		getLine >>= (readMaybe >>> (liftM sin) >>> return) >>= print
+		--getLine >>= (readMaybe >>> return) >>= (liftM sin >>> return) >>= (fromJust >>> return) >>= print
 		--getLine >>= return . readMaybe >>= return . (liftM sin) >>= print
 		--getLine >>= (readMaybe >>> return) >>= (return . (liftM sin)) >>= print
 		--getLine >>= return . (readMaybe :: String -> Maybe Float) >>= (return . (liftM sin)) >>= print
 		--getLine >>= ((readMaybe :: String -> Maybe Float) >>= return . print . (liftM sin))
 		--getLine >>= ((readMaybe :: String -> Maybe Float) >>= return . print)
+		--getLine >>= (read >>> sin >>> print)
 		--getLine >>= print . sin . (read :: String -> Float)
 
 		-- getLine >>= print . sincos . read -- extract the output from the getLine IO monad
