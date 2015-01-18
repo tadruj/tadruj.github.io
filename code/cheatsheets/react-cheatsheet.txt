@@ -1,0 +1,6 @@
+react.js cheatsheet
+
+# Component
+getInitialState: = once per lifecycle of the component and sets initial state this.state
+render:
+
