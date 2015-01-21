@@ -105,3 +105,6 @@ monkey patch - override global functions or methds of basic objects or primitive
 decoration - add functionality to an object by wraping it up inside another object
 
 isomorphic javascript - runs both on server and the client
+
+recursive algorithm - algorithms which invoke themselves as a subroutine with a smaller input
+

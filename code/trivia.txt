@@ -62,5 +62,6 @@ result is needed.
  
 A process is deterministic if repetitions yield the same result every time.
 
+vector is a non-mutable array
 
 
