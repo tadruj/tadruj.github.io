@@ -62,6 +62,9 @@ result is needed.
  
 A process is deterministic if repetitions yield the same result every time.
 
-vector is a non-mutable array
+DK: vector is a non-mutable array
+
+DK: bind is what makes monads special
+DK: functor is a function for types at type level
 
 
