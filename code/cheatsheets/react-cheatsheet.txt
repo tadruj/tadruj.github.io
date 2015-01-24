@@ -1,6 +1,25 @@
 react.js cheatsheet
 
+# Scaffold JSX
+var SearchBox = React.createClass({
+	render: function() {
+		return <div className="searchBox"></div>
+	}
+});
+
+React.render(
+  <SearchBox data={data} url="search.json" pollInterval={20000} />,
+  document.getElementById('content')
+);
+
 # Component
 getInitialState: = once per lifecycle of the component and sets initial state this.state
 render:
+
+this.state.data
+this.props.author = passed as an attribute
+this.props.children = within tags
+
+<input ref="author" /> = name children of the component
+this.refs.author = passed in int the ref attribute
 
