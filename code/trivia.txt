@@ -67,4 +67,4 @@ DK: vector is a non-mutable array
 DK: bind is what makes monads special
 DK: functor is a function for types at type level
 
-
+Libby: higher kinded types = Any
