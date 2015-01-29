@@ -7,18 +7,57 @@
 var PeopleFilter = React.createClass({
 	render: function() {
 		return (
-			<div className="peopleFilter"></div>
+			<div className="peopleFilter">
+				<FilterPanel />
+				<PeopleList people={this.props.people} />
+			</div>
 		);
+	}
+});
+
+var FilterPanel = React.createClass({
+	render: function() {
+		return (
+			<div className="fitlerPanel">
+				<input type="text" placeholder="Filter..." />
+			</div>
+		);
+	}
+});
+
+var PeopleList = React.createClass({
+	render: function() {
+		var peopleList = this.props.people.map(function(person) {
+				return (
+					<PersonItem person={person} />
+				)
+		});
+		return (
+			<div className="peopleList">
+				{peopleList}
+			</div>
+		);
+	}
+});
+
+var PersonItem = React.createClass({
+	render: function() {
+		return (
+			<div className="personItem">
+				<img src={this.props.person.image} width="150" />
+				{this.props.person.name}
+			</div>
+		)
 	}
 });
 
 // People data
 var PEOPLE = [
-	{name: 'Rok Krulex', image: 'http://media.licdn.com/mpr/mpr/shrink_500_500/p/8/005/04c/25a/2dadc78.jpg'},
-	{name: 'Ana Krulex', image: 'http://media.licdn.com/mpr/mpr/shrink_500_500/p/6/005/087/28b/3138dc4.jpg'}
+	{name: 'Rok Krulex', image: 'http://avatars0.githubusercontent.com/u/570868?v=3&s=480'},
+	{name: 'Ana Krulex', image: 'http://lh6.googleusercontent.com/-lGzajkSUsYk/AAAAAAAAAAI/AAAAAAAAoEE/xOYnbXUneHs/photo.jpg'}
 ];
 
 React.render(
-	<PeopleFilter />,
+	<PeopleFilter people={PEOPLE} />,
 	document.getElementById('content')
 );
