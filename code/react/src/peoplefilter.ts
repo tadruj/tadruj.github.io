@@ -5,11 +5,16 @@
 // 		- PersonItem
 
 var PeopleFilter = React.createClass({
+	getInitialState: function() {
+		return {
+			filterString: ''
+		}
+	},
 	render: function() {
 		return (
 			<div className="peopleFilter">
-				<FilterPanel />
-				<PeopleList people={this.props.people} />
+				<FilterPanel filterString={this.state.filterString} />
+				<PeopleList filterString={this.state.filterString} people={this.props.people} />
 			</div>
 		);
 	}
@@ -19,7 +24,7 @@ var FilterPanel = React.createClass({
 	render: function() {
 		return (
 			<div className="fitlerPanel">
-				<input type="text" placeholder="Filter..." />
+				<input type="text" placeholder="Filter..." value={this.props.filterString} />
 			</div>
 		);
 	}
@@ -27,10 +32,14 @@ var FilterPanel = React.createClass({
 
 var PeopleList = React.createClass({
 	render: function() {
-		var peopleList = this.props.people.map(function(person) {
-				return (
-					<PersonItem person={person} />
-				)
+		var peopleList = this.props.people.filter(function(person) {
+			return (
+				person.name.indexOf(this.props.filterString) !== -1
+			);
+		}.bind(this)).map(function(person) {
+			return (
+				<PersonItem person={person} />
+			)
 		});
 		return (
 			<div className="peopleList">
