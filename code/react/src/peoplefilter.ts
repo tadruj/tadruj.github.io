@@ -10,10 +10,13 @@ var PeopleFilter = React.createClass({
 			filterString: ''
 		}
 	},
+	onFilterChange: function(filterString) {
+		this.setState({	filterString: filterString });
+	},
 	render: function() {
 		return (
 			<div className="peopleFilter">
-				<FilterPanel filterString={this.state.filterString} />
+				<FilterPanel filterString={this.state.filterString} onInputChange={this.onFilterChange} />
 				<PeopleList filterString={this.state.filterString} people={this.props.people} />
 			</div>
 		);
@@ -21,10 +24,13 @@ var PeopleFilter = React.createClass({
 });
 
 var FilterPanel = React.createClass({
+	onInputChange: function() {
+		this.props.onInputChange(this.refs.filterStringInput.getDOMNode().value);
+	},
 	render: function() {
 		return (
 			<div className="fitlerPanel">
-				<input type="text" placeholder="Filter..." value={this.props.filterString} />
+				<input type="text" placeholder="Filter..." value={this.props.filterString} ref="filterStringInput" onChange={this.onInputChange} />
 			</div>
 		);
 	}
