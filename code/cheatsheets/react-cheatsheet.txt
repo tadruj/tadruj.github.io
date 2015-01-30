@@ -1,6 +1,7 @@
 react.js cheatsheet
 
-# Scaffold JSX
+# Step 1: Boilerplate
+
 var SearchBox = React.createClass({
 	render: function() {
 		return <div className="searchBox"></div>
@@ -12,14 +13,41 @@ React.render(
   document.getElementById('content')
 );
 
-# Component
+# Step 2: componentize and data
+- Break UI into component hierarchy
+- prepare mock data
+
+# Step 3: static version
+- wire components together using props passing
+- iterate trough lists and display them on mock data
+
+# Step 4: Identify where state should live
+- state in the common parent or the component
+- implement: getInitialState for the component
+- pass state to children via props (use props in children, not state)
+- value= on inputs
+- implement filtering or any functionality based on changing state
+
+# Step 5: Inverse data flow
+- put ref on inputs and data elements
+- onChange events to fire handlers with correct data like: this.refs.filterStringInput.getDOMNode().value
+- handlers that recieve data on component holding the state and do setState({}) which rerenders
+
+# JSX - Typescript Hack
+/// <reference path="../d.ts/react.d.ts" />
+import React = require('react');
+# build TS with
+tsc build/*.ts --outDir final -w --module amd
+
+# Component functions:
 getInitialState: = once per lifecycle of the component and sets initial state this.state
 render:
 
+# Component data:
 this.state.data
 this.props.author = passed as an attribute
 this.props.children = within tags
 
+# Idioms
 <input ref="author" /> = name children of the component
 this.refs.author = passed in int the ref attribute
-
