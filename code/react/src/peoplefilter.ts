@@ -24,6 +24,10 @@ var PeopleFilter = React.createClass({
 });
 
 var FilterPanel = React.createClass({
+	propTypes: {
+		onInputChange: React.PropTypes.func.isRequired,
+		filterString: React.PropTypes.string.isRequired,
+	},
 	onInputChange: function() {
 		this.props.onInputChange(this.refs.filterStringInput.getDOMNode().value);
 	},
@@ -44,7 +48,7 @@ var PeopleList = React.createClass({
 			);
 		}.bind(this)).map(function(person) {
 			return (
-				<PersonItem person={person} />
+				<PersonItem key={person.name} person={person} /> // Uniquely identify the React element with a key
 			)
 		});
 		return (
