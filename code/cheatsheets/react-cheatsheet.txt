@@ -33,6 +33,14 @@ React.render(
 - onChange events to fire handlers with correct data like: this.refs.filterStringInput.getDOMNode().value
 - handlers that recieve data on component holding the state and do setState({}) which rerenders
 
+# Step 6: Add 'key' attributes and propTypes for reconciliation and reusage
+propTypes: {
+	onInputChange: React.PropTypes.func.isRequired,
+	filterString: React.PropTypes.string.isRequired,
+},
+getDefaultProps: function() { return { value: 'default value' }; }
+
+
 # JSX - Typescript Hack
 /// <reference path="../d.ts/react.d.ts" />
 import React = require('react');
@@ -40,14 +48,29 @@ import React = require('react');
 tsc build/*.ts --outDir final -w --module amd
 
 # Component functions:
+componentWillMount:
+componentDidMount:
+componentWillUnmount:
 getInitialState: = once per lifecycle of the component and sets initial state this.state
 render:
+setState({})
 
 # Component data:
 this.state.data
 this.props.author = passed as an attribute
-this.props.children = within tags
+this.props.children = within tags of parent <parent><children /></parent>
 
 # Idioms
 <input ref="author" /> = name children of the component
 this.refs.author = passed in int the ref attribute
+return <a {...this.props}>{'√ '}{this.props.children}</a>; = spread function to copy attributes
+this.refs.myTextInput.getDOMNode().focus(); = access DOM element and run functions on it
+
+handleChange: function(e) {
+	this.setState({userInput: e.target.value});
+},
+<input value={this.state.userInput} onChange={this.handleChange} />
+
+# Misc
+React.initializeTouchEvents(true);
+
