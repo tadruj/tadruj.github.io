@@ -4,4 +4,6 @@ _build
 *.byte
 *.native
 *.swp
+code/react/build
+code/react/final
 

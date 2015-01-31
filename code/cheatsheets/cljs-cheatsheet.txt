@@ -3,3 +3,46 @@ cljs-cheatsheet
 lein new mies-om hello-world
 lein cljsbuild auto
 python -m SimpleHTTPServer
+
+
+# Vectors
+
+nth [] n
+get [] n
+get [] n :default
+[] n
+
+count []
+conj [v] [v'] ;; add v' to the end
+
+# Maps
+
+{} :k :default
+get {} :k
+:l {} ;; idiomatic
+
+assoc {} :k :v ;; add a key
+dissoc {} :k
+
+contains? {} :k
+keys {}
+vals {}
+find {:k "v"} :k ;; returns [:k "v"]
+zipmap [ks] [vs]
+hash-map k v k' v' ...
+apply hash-map [k v k' v']
+
+# Sets
+
+conj #{} :v :v' :v''
+contains? #{} :v
+
+# Lists
+
+'(:foo :bar :baz)
+conj '() :front
+first
+last
+identical? '(l1) '(l2) ;; same thing in memory
+
+

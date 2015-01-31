@@ -87,14 +87,22 @@ lt-cljs-tutorial/x
 ;; This means top levels can never be shadowed by locals and function
 ;; parameters.
 
+(let [x 3])
+(let [x 3] x)
+(let [x 3 x' x] x')
+x
+x'
+
 (let [x 2]
   lt-cljs-tutorial/x)
-
 ;; One way to define a function is like this.
 
 (def y (fn [] 1))
 
 (y)
+
+(def sum' (fn [a' b'] (+ a' b')))
+(sum' 3 4)
 
 ;; Defining functions in ClojureScript is common enough that `defn` sugar is
 ;; provided and idiomatic.
@@ -103,6 +111,8 @@ lt-cljs-tutorial/x
 
 (z)
 
+(defn sum'' [a' b'] (+ a' b'))
+(sum'' 5 6)
 
 ;; Literal data types
 ;; ----------------------------------------------------------------------------
@@ -142,6 +152,8 @@ lt-cljs-tutorial/x
 
 (map #(* % 2) [1 2 3 4 5])
 
+(#(+ % 2) 3)
+(#(+ %1 %2) 3 4)
 
 ;; JavaScript data type literals
 ;; ----------------------------------------------------------------------------
@@ -150,10 +162,14 @@ lt-cljs-tutorial/x
 
 (def an-array (array 1 2 3))
 
+(map #(* % 2) (array 3 4 5))
+
 ;; But ClojureScript also supports JavaScript data literals via the `#js`
 ;; reader literal.
 
 (def another-array #js [1 2 3])
+
+(map #(* % 2) #js [1 2 3])
 
 ;; Similarly, you can create simple JavaScript objects with `js-obj`.
 
@@ -163,6 +179,8 @@ lt-cljs-tutorial/x
 
 (def another-object #js {"foo" "bar"})
 
+(def another-object' #js {:foo "bar"})
+
 ;; It's important to note that `#js` is shallow, the contents of `#js` will be
 ;; ClojureScript data unless preceded by `#js`.
 
@@ -171,6 +189,10 @@ lt-cljs-tutorial/x
 
 (def shallow #js {"foo" [1 2 3]})
 
+;; convert native clj data type to js one
+(clj->js {:foo [1 2 3]})
+
+(def shallow' #js {:foo #js [1 2 3]})
 
 ;; Constructing a type
 ;; ----------------------------------------------------------------------------
@@ -183,6 +205,14 @@ lt-cljs-tutorial/x
 (def a-date (js/Date.))
 
 (def another-date #inst "2014-01-15")
+
+;; #inst is a reader macro, anything with a # is a reader macro that pattern matches
+;; the thing you give it and returns something useful
+
+;; #() is the reader macro to expand into (fn [%..] ...)
+;; #inst, #"" is regexp
+
+(def another-date #inst "2014-01-16")
 
 ;; Note the above returns an `#inst` data literal.
 
@@ -197,6 +227,8 @@ js/Date
 js/RegExp
 
 js/requestAnimationFrame
+
+(js/console.log "This should be visible in console. Cool.")
 
 ;; If you're curious about other JavaScript interop jump to the bottom of this
 ;; tutorial.
@@ -225,6 +257,8 @@ js/requestAnimationFrame
 ;; We can add an element to the end.
 
 (def another-vector (conj a-vector 6))
+(def another-vector' (conj a-vector 6 7 8))
+(conj a-vector 6 7 8)
 
 ;; Note this does not mutate the array! `a-vector` will be left
 ;; unchanged.
@@ -232,6 +266,7 @@ js/requestAnimationFrame
 a-vector
 
 another-vector
+another-vector'
 
 ;; Hallelujah! Here is where some ClojureScript magic
 ;; happens. `another-vector` appears to be a completely new vector
@@ -260,8 +295,8 @@ another-vector
 ;; a very useful property for associative data structures to have as
 ;; we'll see below with sets.
 
+a-vector
 (a-vector 1)
-
 (["foo" "bar" "baz"] 1)
 
 
@@ -288,6 +323,8 @@ another-vector
 ;; We can access a particular value for a key with `get`.
 
 (get a-map :foo)
+({:foo "bar" :baz "woz"} :baz)
+({:foo "bar" :baz "woz"} :bag :default-if-no-bag)
 
 ;; and return an alternative value when the key is not present
 
@@ -343,27 +380,37 @@ a-map
 (get-in a-nested-map [:preferences :nickname])
 (get-in a-nested-map [:services :alerts :daily])
 
+({:name "Rok" :birth {:day 31}} :birth :day)
+(:name {:name "Rok" :birth {:day 31}})
+(:birth {:name "Rok" :birth {:day 31}})
+
 ;; or just find a top level key-value pair (i.e. MapEntry) by key
 
 (find a-nested-map :customer-id)
 (find a-nested-map :services)
+
+(find {:name "Rok" :birth {:day 31}} :birth)
 
 ;; There are many cool ways to create maps.
 
 (zipmap [:foo :bar :baz] [1 2 3])
 
 (hash-map :foo 1 :bar 2 :baz 3)
+(hash-map :foo 1 :bar 2)
+
 
 (apply hash-map [:foo 1 :bar 2 :baz 3])
+{:foo 1 :bar 2 :baz 3}
 
 (into {} [[:foo 1] [:bar 2] [:baz 3]])
 
 ;; Unlike JavaScript objects, ClojureScript maps support complex keys.
 
 (def complex-map {[1 2] :one-two [3 4] :three-four})
-
 (get complex-map [3 4])
 
+;; This is BADASS
+{[1 2] "arraykey this is value" {:k1 :v1 :k2 v2} "mapkey this is value"}
 
 ;; Keyword digression
 ;; ----------------------------------------------------------------------------
@@ -392,6 +439,9 @@ a-map
 ;; ClojureScript also supports sets.
 
 (def a-set #{:cat :dog :bird})
+(conj #{:cat :dog :bird} :fish)
+(conj #{:cat :dog :bird} :fish :cat)
+(conj #{:cat :dog :bird} :fish :cat 33 "foo")
 
 ;; `:cat` is already in `a-set`, so it will be unchanged.
 
@@ -434,11 +484,13 @@ a-map
 ;; useful—especially when dealing with code (i.e. code is data).
 
 (def a-list '(:foo :bar :baz))
+'(:foo :bar :baz)
 
 ;; `conj` is "polymorphic" on lists as well, and it's smart enough to
 ;; add the new item in the most efficient way on the basis of the
 ;; collection type.
 (conj a-list :front)
+(conj '() :first)
 
 ;; and lists are immutable as well
 
