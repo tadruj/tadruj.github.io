@@ -44,5 +44,6 @@ conj '() :front
 first
 last
 identical? '(l1) '(l2) ;; same thing in memory
+= ;; equality
 
 

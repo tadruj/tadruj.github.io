@@ -97,6 +97,17 @@ x'
   lt-cljs-tutorial/x)
 ;; One way to define a function is like this.
 
+(def fruit-map
+  {:apple "jabolko"
+   :tomato "paradajz"
+   :pear "gruska"})
+
+(defn en-to-sl [english-word]
+  (let [slovenian-word (get fruit-map english-word)
+        slovenian-backward-word (reverse slovenian-word)]
+    (string/join slovenian-backward-word)))
+(en-to-sl :apple)
+
 (def y (fn [] 1))
 
 (y)
