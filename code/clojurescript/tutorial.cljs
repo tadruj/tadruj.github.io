@@ -105,7 +105,7 @@ x'
 (defn en-to-sl [english-word]
   (let [slovenian-word (get fruit-map english-word)
         slovenian-backward-word (reverse slovenian-word)]
-    (string/join slovenian-backward-word)))
+    (clojure.string/join slovenian-backward-word)))
 (en-to-sl :apple)
 
 (def y (fn [] 1))
@@ -652,7 +652,7 @@ a-list
 ;; be better expressed as the following:
 
 (into [] (range 10))
-
+(range 10)
 
 ;; Moar functions
 ;; ============================================================================
@@ -666,7 +666,12 @@ a-list
 (defn foo1 [a b]
   (+ a b))
 
+(#(+ %1 %2) 1 2)
+
 (foo1 1 2)
+
+(defn sum'' [a b] (+ a b))
+(sum'' 1 2)
 
 ;; Functions can have multiple arities.
 
@@ -711,6 +716,11 @@ a-list
 ;; the value received.
 
 (defmulti simple-multi identity)
+identity
+(identity)
+(identity 1)
+(identity :foo)
+(identity :foo :bar)
 
 ;; Now we can define methods for particular values.
 
@@ -730,7 +740,6 @@ a-list
   (simple-multi "bar")
   )
 
-
 ;; Here is a function that takes a list. It dispatches on the first element
 ;; of the list!
 ;; Note that this example uses destructuring, which is covered later.
@@ -746,6 +755,40 @@ a-list
 (parse '(if a b c))
 (parse '(let [x 1] x))
 
+
+;; A function that's going to return the value to be pattern matched
+(defmulti do' (fn [first last] [first last]))
+
+;; pattern matching on values
+(defmethod do' ["Rok" "Krulex"]
+  [first last] {:first first :last last})
+
+;; pattern matching on values
+(defmethod do' ["Ana" "Krulex"]
+  [first last] {:first (str first "banana") :last last})
+
+(do' "Rok" "Krulex")
+
+(do' "Ana" "Krulex")
+
+(def lang-sl {:apple "jabolko" :tomato "paradajz" :eat "pojem" :peel "olupim" :nevem "nevem"})
+
+;; Check the first argument of the function and dispatch an appropriate handler
+(defmulti perform (fn [object] [object]))
+
+;; handler destructures the arguments any way it likes
+(defmethod perform [:apple]
+  [object verb]
+  (str (verb lang-sl) " " (object lang-sl)))
+
+(defmethod perform :default
+  [object verb]
+  (str (lang-sl :nevem) " " (:nevem lang-sl)))
+
+(perform :apple :eat)
+(perform :apple :peel)
+(perform :tomato :eat)
+;; https://www.refheap.com/96811
 
 ;; Scoping
 ;; ============================================================================
@@ -784,7 +827,6 @@ some-x
 (bar)
 
 ;; And Nobody else.
-
 (comment
   (defn baz []
     (type a))
@@ -847,6 +889,9 @@ some-x
 
 (let [[r g b] [255 255 150]]
   g)
+
+(let [[r g b] [255 255 150]]
+  [g r b])
 
 ;; _ is just a convention for saying that you are not interested at the
 ;; item in the corresponding position. it has no other special meaning.

@@ -108,3 +108,6 @@ isomorphic javascript - runs both on server and the client
 
 recursive algorithm - algorithms which invoke themselves as a subroutine with a smaller input
 
+variadic function - function accepting different number of arguments
+
+function arity - the number of arguments function accepts. Operators have arity 0, 1, 2 and functions can have more
