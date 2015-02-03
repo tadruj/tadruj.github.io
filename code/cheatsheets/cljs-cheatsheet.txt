@@ -4,6 +4,9 @@ lein new mies-om hello-world
 lein cljsbuild auto
 python -m SimpleHTTPServer
 
+lein cljsbuild once dev
+lein cljsbuild auto dev
+lein ring server
 
 # Vectors
 
