@@ -8,6 +8,20 @@ lein cljsbuild once dev
 lein cljsbuild auto dev
 lein ring server
 
+# Light Table
+CTRL-SHIFT-D -> search docs
+CTRL-SPACE -> search LT commands
+CTRL-SPACE + key => Settings: User keymap
+
+# String
+(ns namespace
+  (:require [clojure.string :as string]))
+
+string/blank?
+string/upper-case
+string/reverse
+str s1 s2 s3 ;; concatenate
+
 # Vectors
 
 nth [] n
@@ -20,6 +34,7 @@ conj [v] [v'] ;; add v' to the end
 
 # Maps
 
+{k v, k' v', k'' v''}
 {} :k :default
 get {} :k
 :l {} ;; idiomatic
@@ -37,6 +52,7 @@ apply hash-map [k v k' v']
 
 # Sets
 
+#{:v1 :v2 :v3}
 conj #{} :v :v' :v''
 contains? #{} :v
 
@@ -49,4 +65,26 @@ last
 identical? '(l1) '(l2) ;; same thing in memory
 = ;; equality
 
+# List comprehension
 
+for
+	[x '()
+	y '()]
+	:let [w ()]
+	:when (=)
+
+# Sequences
+
+seq [],'(),{}
+first
+rest
+
+# Metadata
+(with-meta data {})
+
+# Other
+
+cond
+	c1 ()
+	c2 ()
+	:else ()
