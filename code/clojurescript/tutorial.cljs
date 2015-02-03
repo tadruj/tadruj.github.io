@@ -26,6 +26,15 @@
 ;; the current one. Here we are requiring `clojure.string` and giving it an
 ;; alias. We could write the following:
 
+;; =============================================================
+;;
+;; IMPORTANT !!!
+;;
+;; Remember you can type Control-Shift-D at anytime to bring up
+;; the documentation panel to see what any of these function do.
+;;
+;; =============================================================
+
 (clojure.string/blank? "")
 
 ;; But that's really verbose compared to:
@@ -115,6 +124,9 @@ x'
 (def sum' (fn [a' b'] (+ a' b')))
 (sum' 3 4)
 
+(def mul' (fn [a' b'] (* a' b')))
+(mul' 3 4)
+
 ;; Defining functions in ClojureScript is common enough that `defn` sugar is
 ;; provided and idiomatic.
 
@@ -124,6 +136,9 @@ x'
 
 (defn sum'' [a' b'] (+ a' b'))
 (sum'' 5 6)
+
+(defn mul'' [a'' b''] (* a'' b''))
+(mul'' 5 6)
 
 ;; Literal data types
 ;; ----------------------------------------------------------------------------
@@ -162,6 +177,7 @@ x'
 ;; Or you can save typing a few characters like this:
 
 (map #(* % 2) [1 2 3 4 5])
+(map #(* % 3) [1 2 3])
 
 (#(+ % 2) 3)
 (#(+ %1 %2) 3 4)
@@ -326,6 +342,7 @@ a-vector
 ;; we'll see in a moment.
 
 (def a-map {:foo "bar" :baz "woz"})
+{:rok "Krulex", :ana "Krulex"}
 
 ;; We can get the number of key-value pairs in constant time.
 
@@ -547,6 +564,8 @@ a-list
 
 (= [1 2 3] '(1 2 3))
 
+;; Lists should be used in any code generation = macros, vectors should be used where there's appending/prepending
+
 ;; Again, it is possible to check whether two things are represented
 ;; by the same thing in memory with `identical?`.
 
@@ -653,6 +672,9 @@ a-list
 
 (into [] (range 10))
 (range 10)
+
+'(1 2 3)
+(into [] '(1 2 3))
 
 ;; Moar functions
 ;; ============================================================================
@@ -996,6 +1018,23 @@ some-x
       y (range 1 10)]
   [x y])
 
+(range 1 10)
+(range 10)
+(range 5 10)
+
+(for [x '(1 2 3)
+      y '(4 5 6)
+      z '(7 8 9)
+      w '(:a :b :c)]
+  [x y z w])
+
+(for [x '(1 2 3)
+      y '(4 5 6)
+      z '(7 8 9)
+      :let [w (* x 2)]
+      :when (= (mod w 4) 0)]
+  [x y z w])
+
 (for [x (range 1 10)
       y (range 1 10)
       :when (and (zero? (rem x y))
@@ -1048,6 +1087,8 @@ some-x
 (def plain-data [0 1 2 3 4 5 6 7 8 9])
 
 (def decorated-data (with-meta plain-data {:url "http://lighttable.com"}))
+
+(meta (with-meta '(1 2 3) "Just a list"))
 
 ;; Metadata has no effect on equality.
 
@@ -1122,6 +1163,16 @@ some-x
 
 (deref x)
 
+;; You can redefine the value
+
+(def x (atom 3))
+
+x
+
+@x
+
+;; or
+
 ;; If you want to change the value of an atom you can use `reset!` which returns
 ;; the new value. It's idiomatic to add the bang char `!` at the end of function
 ;; names mutating objects.
@@ -1147,12 +1198,42 @@ x
 
 @x
 
+(swap! x #(* % 2))
+
+x
+
+@x
+
+(swap! x (fn [x] (quot x 5)))
+
+x
+
+@x
+
 ;; If your updating function needs extra arguments to calculate the new value, you
 ;; have to pass them as extra arguments to `swap!` after the updating function
 ;; itself.
 
 (swap! x (fn [old extra-arg]
            (+ old extra-arg)) 39)
+
+x
+
+@x
+
+(swap! x #(* %1 %2) 2)
+
+x
+
+@x
+
+(swap! x #(%2 %1 2) quot)
+
+x
+
+@x
+
+(swap! x #(%2 %1 2) +)
 
 x
 
@@ -1199,6 +1280,7 @@ x
 
 (apply str (interpose ", " ["Bob" "Mary" "George"]))
 
+;; juxt take n functions and applies them to all arguments returning a vector item for each function
 ((juxt :first :last) {:first "Bob" :last "Smith"})
 
 (def people [{:first "John" :last "McCarthy"}
@@ -1217,8 +1299,11 @@ x
 (take 10 (cycle ["red" "white" "blue"]))
 
 (partition 2 [:a 1 :b 2 :c 3 :d 4 :e 5])
-
+;; create lists/tuples of SIZE:%1 and STEP:%2
 (partition 2 1 [:a 1 :b 2 :c 3 :d 4 :e 5])
+(partition 3 [:a 1 :b 2 :c 3 :d 4 :e 5])
+(partition 3 2 [:a 1 :b 2 :c 3 :d 4 :e 5])
+(partition 3 1 [:a 1 :b 2 :c 3 :d 4 :e 5])
 
 (take-while #(< % 5) (range 10))
 
@@ -1313,9 +1398,13 @@ x
           (aget obj k)
           not-found)))))
 
+(name :foo)
+(aget #js {:foo "bar"} "foo")
+
 ;; We can then selectively make JavaScript objects work with `get`.
 
 (get (->lookup #js {"foo" "bar"}) :foo)
+(get (->lookup #js {"foo" "bar"}) :fox)
 
 ;; But this also means we get destructuring on JavaScript objects.
 
