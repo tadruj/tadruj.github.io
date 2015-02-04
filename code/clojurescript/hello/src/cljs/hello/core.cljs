@@ -7,7 +7,7 @@
               [pani.cljs.core :as pani])
     (:import goog.History))
 
-(def firebase-app-url "https://hackerscool.firebaseio.com/")
+(def firebase-app-url "https://hackerscool.firebaseio.com/hello_world")
 (def r (pani/root firebase-app-url))
 
 ;; State
