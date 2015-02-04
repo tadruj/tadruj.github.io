@@ -6,7 +6,17 @@ python -m SimpleHTTPServer
 
 lein cljsbuild once dev
 lein cljsbuild auto dev
+
+# run the clj server part
 lein ring server
+
+# run in the real-time reload figwheel mode
+lein figwheel
+
+# Create uberjar for deployment to Heroku
+lein uberjar
+# Run the production uberjar localy
+foreman start
 
 # Light Table
 CTRL-SHIFT-D -> search docs
@@ -88,3 +98,11 @@ cond
 	c1 ()
 	c2 ()
 	:else ()
+
+# Reverse composition
+
+(-> % .-target .-value)
+;; equals
+(.-target (.-value %))
+;; in JS
+arg1["value"]["target"]
