@@ -24,24 +24,6 @@
   (get-in @state [:doc id]))
 
 ;; Views
-(defn text-input [id label]
-  [:div
-   [:input {
-            :type "text"
-            :class "form-control"
-            :placeholder label
-            :value (get-value id)
-            :onChange #(set-and-save-value! id (-> % .-target .-value))
-            }]])
-
-(defn hello [name age]
-  [:div
-   [:span "Hello my name is "]
-   [:span name]
-   [:span " and I'm "]
-   [:span age]
-   [:span " years old."]])
-
 (comment
   (def items [{:results "ata\nmama\nteta\n" :request {:query "family"}}, {:results "foo\nbar\nbaz\nwoz\n" :request {:query "nerds"}}])
   (result-list items)
@@ -57,11 +39,30 @@
 
 (defn result-item [item]
   [:div
-    [:div.title (get-in item [:request :query])]
-    [:div
-     (for [line (string/split-lines (get-in item [:results]))]
-       [:div (strip-filename line)])
-     ]])
+    [:div.x-header.x-relative
+      [:div.x-kode (get-in item [:request :query])]
+      [:div.x-top-right.x-kode
+        [:span.glyphicon.glyphicon-refresh]]]
+    [:div.x-code-lines
+      (for [line (string/split-lines (get-in item [:results]))]
+        [result-line line])]])
+
+(defn result-line [line]
+  (let [
+        copied (atom false)
+        touch-and-copy #(do
+                         (reset! copied (not @copied))
+                         (pani/set! r :clipboard line)
+                         (js/console.log "COPIED to Firebase")
+                         )
+        ]
+    (fn []
+  [:div.x-code
+   {:class (if @copied "x-copied")
+    :on-touch-start #(touch-and-copy %)
+    :on-mouse-down #(touch-and-copy %)
+    }
+   (strip-filename line)])))
 
 (defn strip-filename [grep-line]
   (let [filtered-line (re-find #"[-:].*" grep-line)]
@@ -70,18 +71,11 @@
 
 (defn current-page []
    [:div
-    [result-list (reverse (into [] (vals (@state :doc))))]
-;;     [:h2 "Grep"]
-;;     [:div
-;;      [hello (get-value :name) (get-value :age)]
-;;      [text-input :name "Name"]
-;;      [text-input :age "Age"]
-;;      "ClojureScript + Reagent + Firebase together are 10 years old."
-;;      ]
-    ])
+    [result-list (reverse (into [] (vals (@state :doc))))]])
 
 ;; Initialize app
 (defn init! []
+  (js/React.initializeTouchEvents true)
   (pani/bind r :child_added :response #(set-value! (keyword (get % :name)) (get % :val) ))
 ;;   (pani/bind r :child_added :response #(js/console.log (clj->js (get % :val)) ))
   (reagent/render-component [current-page] (.getElementById js/document "app")))
