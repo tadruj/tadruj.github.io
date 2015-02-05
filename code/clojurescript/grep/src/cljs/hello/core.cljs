@@ -12,26 +12,13 @@
 (defn set-value! [id value]
   (swap! state assoc-in [:doc id] value))
 
-(defn save-value! [id value]
-;;   (pani/set! r id value)
-  )
-
-(defn set-and-save-value! [id value]
-  (set-value! id value)
-  (save-value! id value))
+(defn delete-value! [id]
+  (swap! state update-in [:doc] dissoc id))
 
 (defn get-value [id]
   (get-in @state [:doc id]))
 
 ;; Views
-(comment
-  (def items [{:results "ata\nmama\nteta\n" :request {:query "family"}}, {:results "foo\nbar\nbaz\nwoz\n" :request {:query "nerds"}}])
-  (result-list items)
-  (hello "rok" "39")
-  (into [] (vals (@state :doc)))
-  (result-list (vals (@state :doc)))
-)
-
 (defn result-list [items]
   [:div
     (for [item items]
@@ -44,25 +31,41 @@
       [:div.x-top-right.x-kode
         [:span.glyphicon.glyphicon-refresh]]]
     [:div.x-code-lines
-      (for [line (string/split-lines (get-in item [:results]))]
+      (for [line (take 6 (filter #(if (not= (string/trim %) "") true false) (string/split-lines (get-in item [:results]))))]
         [result-line line])]])
 
 (defn result-line [line]
   (let [
         copied (atom false)
-        touch-and-copy #(do
-                         (reset! copied (not @copied))
-                         (pani/set! r :clipboard line)
-                         (js/console.log "COPIED to Firebase")
-                         )
+        touchStartTime (atom 0)
+        stripped-line (strip-filename line)
+        handle-touch-start #(do
+                              (reset! touchStartTime (.getTime (js/Date.)))
+                              (js/console.log "handle-touch-start" @touchStartTime)
+                              )
+        handle-touch-end #(do
+                            (js/console.log  (> (- (.getTime (js/Date.)) @touchStartTime) 500)  (- (.getTime (js/Date.)) @touchStartTime))
+                            (if (> (- (.getTime (js/Date.)) @touchStartTime) 500)
+                              (do
+                                (reset! copied true)
+                                (pani/set! r :clipboard stripped-line)
+                                (js/console.log "COPIED")
+                                )
+                              (do
+                                (reset! copied false)
+                                (js/console.log "NOT COPIED")
+                                )
+                            ))
         ]
     (fn []
   [:div.x-code
    {:class (if @copied "x-copied")
-    :on-touch-start #(touch-and-copy %)
-    :on-mouse-down #(touch-and-copy %)
+    :on-touch-start #(handle-touch-start %)
+    :on-touch-end #(handle-touch-end %)
+;;     :on-mouse-down #(handle-touch-start %)
+;;     :on-mouse-up #(handle-touch-end %)
     }
-   (strip-filename line)])))
+   stripped-line])))
 
 (defn strip-filename [grep-line]
   (let [filtered-line (re-find #"[-:].*" grep-line)]
@@ -76,6 +79,12 @@
 ;; Initialize app
 (defn init! []
   (js/React.initializeTouchEvents true)
-  (pani/bind r :child_added :response #(set-value! (keyword (get % :name)) (get % :val) ))
-;;   (pani/bind r :child_added :response #(js/console.log (clj->js (get % :val)) ))
+  (pani/bind r :child_added :response #(do
+                                         (set-value! (keyword (get % :name)) (get % :val) )
+                                         (js/console.log ":child_added" (get % :name) (clj->js (get % :val)))
+                                         ))
+  (pani/bind r :child_removed :response #(do
+                                         (js/console.log ":child_removed" (keyword (get % :name)) (get % :name) (clj->js %))
+                                         (delete-value! (keyword (get % :name)))
+                                         ))
   (reagent/render-component [current-page] (.getElementById js/document "app")))
