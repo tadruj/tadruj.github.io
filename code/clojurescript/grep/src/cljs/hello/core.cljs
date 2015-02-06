@@ -9,10 +9,6 @@
 ;; State
 (def state (atom {:doc {}})) ;; watchers
 
-(comment
-  @state ;; dereferencing is watched by Reagent
-)
-
 (defn set-value! [id value]
   (swap! state assoc-in [:doc id] value)) ;; compare & set
 
@@ -23,43 +19,33 @@
   (get-in @state [:doc id]))
 
 (defn strip-filename [grep-line]
-  (let [filtered-line (re-find #"[-:].*" grep-line)]
-    (if filtered-line
-      (subs filtered-line 1))))
+  (when-let [filtered-line (re-find #"[-:].*" grep-line)]
+    (subs filtered-line 1)))
 
 ;; Views
 (defn result-line [line]
-  (let [
-        copied (atom false)
-        touchStartTime (atom 0)
-        stripped-line (strip-filename line)
+  (let [copied             (atom false)
+        touch-start-time   (atom 0)
+        stripped-line      (strip-filename line)
         handle-touch-start (fn [event] 
-                              (reset! touchStartTime (.getTime (js/Date.)))
-                              (js/console.log "handle-touch-start" @touchStartTime)
-                              )
+                              (reset! touch-start-time (.getTime (js/Date.))))
         handle-touch-end (fn [event]
-                            (js/console.log  (> (- (.getTime (js/Date.)) @touchStartTime) 500)  (- (.getTime (js/Date.)) @touchStartTime))
-                            (if (> (- (.getTime (js/Date.)) @touchStartTime) 500)
+                           (let [now (.getTime (js/Date.))
+                                 threshold 500
+                                 triggered? (> (- now @touch-start-time) threshold)] 
+                            (if triggered?
                               (do
                                 (reset! copied true)
-                                (pani/set! r :clipboard stripped-line)
-                                (js/console.log "COPIED")
-                                )
-                              (do
-                                (reset! copied false)
-                                (js/console.log "NOT COPIED")
-                                )
-                            ))
-        ]
-    (fn []
-  [:div.x-code
-   {:class (if @copied "x-copied")
-    :on-touch-start #(handle-touch-start %)
-    :on-touch-end #(handle-touch-end %)
-;;     :on-mouse-down #(handle-touch-start %)
-;;     :on-mouse-up #(handle-touch-end %)
-    }
-   stripped-line])))
+                                (pani/set! r :clipboard stripped-line))
+                              (reset! copied false))))]
+      [:div.x-code
+       {:class (if @copied "x-copied")
+        :on-touch-start #(handle-touch-start %)
+        :on-touch-end #(handle-touch-end %)
+    ;;     :on-mouse-down #(handle-touch-start %)
+    ;;     :on-mouse-up #(handle-touch-end %)
+        }
+       stripped-line]))
 
 (defn result-item [item]
   [:div
@@ -68,17 +54,21 @@
       [:div.x-top-right.x-kode
         [:span.glyphicon.glyphicon-refresh]]]
     [:div.x-code-lines
-      (for [line (take 6 (filter #(if (not= (string/trim %) "") true false) (string/split-lines (get-in item [:results]))))]
-        [result-line line])]])
+      (let [lines (->> (:results item)
+                      string/split-lines
+                      (remove string/blank?) ;; (comp not string/empty?)
+                      (take 6))]
+        (map result-line lines))]])
 
 (defn result-list [items]
   [:div
-    (for [item items]
-      [:div (result-item item)])])
+    (map result-item items)])
 
 (defn current-page []
    [:div
-    [result-list (reverse (into [] (vals (@state :doc))))]])
+    [result-list (->> (:doc @state) ;; this is a thrush operator
+                      vals
+                      (sort-by (comp - :time)))]])
 
 ;; Initialize app
 (defn init! []
