@@ -7,10 +7,14 @@
 (def r (pani/root (str firebase-app-url "grep/search")))
 
 ;; State
-(def state (atom {:doc {}}))
+(def state (atom {:doc {}})) ;; watchers
+
+(comment
+  @state ;; dereferencing is watched by Reagent
+)
 
 (defn set-value! [id value]
-  (swap! state assoc-in [:doc id] value))
+  (swap! state assoc-in [:doc id] value)) ;; compare & set
 
 (defn delete-value! [id]
   (swap! state update-in [:doc] dissoc id))
@@ -18,32 +22,22 @@
 (defn get-value [id]
   (get-in @state [:doc id]))
 
+(defn strip-filename [grep-line]
+  (let [filtered-line (re-find #"[-:].*" grep-line)]
+    (if filtered-line
+      (subs filtered-line 1))))
+
 ;; Views
-(defn result-list [items]
-  [:div
-    (for [item items]
-      [:div (result-item item)])])
-
-(defn result-item [item]
-  [:div
-    [:div.x-header.x-relative
-      [:div.x-kode (get-in item [:request :query])]
-      [:div.x-top-right.x-kode
-        [:span.glyphicon.glyphicon-refresh]]]
-    [:div.x-code-lines
-      (for [line (take 6 (filter #(if (not= (string/trim %) "") true false) (string/split-lines (get-in item [:results]))))]
-        [result-line line])]])
-
 (defn result-line [line]
   (let [
         copied (atom false)
         touchStartTime (atom 0)
         stripped-line (strip-filename line)
-        handle-touch-start #(do
+        handle-touch-start (fn [event] 
                               (reset! touchStartTime (.getTime (js/Date.)))
                               (js/console.log "handle-touch-start" @touchStartTime)
                               )
-        handle-touch-end #(do
+        handle-touch-end (fn [event]
                             (js/console.log  (> (- (.getTime (js/Date.)) @touchStartTime) 500)  (- (.getTime (js/Date.)) @touchStartTime))
                             (if (> (- (.getTime (js/Date.)) @touchStartTime) 500)
                               (do
@@ -67,10 +61,20 @@
     }
    stripped-line])))
 
-(defn strip-filename [grep-line]
-  (let [filtered-line (re-find #"[-:].*" grep-line)]
-    (if filtered-line
-      (subs filtered-line 1))))
+(defn result-item [item]
+  [:div
+    [:div.x-header.x-relative
+      [:div.x-kode (get-in item [:request :query])]
+      [:div.x-top-right.x-kode
+        [:span.glyphicon.glyphicon-refresh]]]
+    [:div.x-code-lines
+      (for [line (take 6 (filter #(if (not= (string/trim %) "") true false) (string/split-lines (get-in item [:results]))))]
+        [result-line line])]])
+
+(defn result-list [items]
+  [:div
+    (for [item items]
+      [:div (result-item item)])])
 
 (defn current-page []
    [:div
