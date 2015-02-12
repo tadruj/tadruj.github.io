@@ -6,4 +6,5 @@ _build
 *.swp
 code/react/build
 code/react/final
+.vagrant
 
