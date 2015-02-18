@@ -1,0 +1,1650 @@
+Bringing machine 'default' up with 'virtualbox' provider...
+==> default: Importing base box 'ubuntu/trusty64'...
+[KProgress: 90%[K==> default: Matching MAC address for NAT networking...
+==> default: Checking if box 'ubuntu/trusty64' is up to date...
+==> default: Setting the name of the VM: php-fps_default_1424231861756_54593
+==> default: Clearing any previously set forwarded ports...
+==> default: Clearing any previously set network interfaces...
+==> default: Preparing network interfaces based on configuration...
+    default: Adapter 1: nat
+    default: Adapter 2: hostonly
+==> default: Forwarding ports...
+    default: 80 => 8080 (adapter 1)
+    default: 22 => 2222 (adapter 1)
+==> default: Booting VM...
+==> default: Waiting for machine to boot. This may take a few minutes...
+    default: SSH address: 127.0.0.1:2222
+    default: SSH username: vagrant
+    default: SSH auth method: private key
+    default: Warning: Connection timeout. Retrying...
+    default: Warning: Remote connection disconnect. Retrying...
+    default: 
+    default: Vagrant insecure key detected. Vagrant will automatically replace
+    default: this with a newly generated keypair for better security.
+    default: 
+    default: Inserting generated public key within guest...
+    default: Removing insecure key from the guest if its present...
+    default: Key inserted! Disconnecting and reconnecting using new SSH key...
+==> default: Machine booted and ready!
+==> default: Checking for guest additions in VM...
+==> default: Configuring and enabling network interfaces...
+==> default: Mounting shared folders...
+    default: /vagrant => /Users/rok/tadruj.github.io/code/devops/vagrant/php-fps
+==> default: Running provisioner: shell...
+    default: Running: inline script
+==> default: stdin: is not a tty
+==> default: =====================================
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: software-properties-common is already the newest version.
+==> default: 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+==> default: Executing: gpg --ignore-time-conflict --no-options --no-default-keyring --homedir /tmp/tmp.Z9E3yxd9IJ --no-auto-check-trustdb --trust-model always --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0x5a16e7281be7a449
+==> default: gpg: 
+==> default: requesting key 1BE7A449 from hkp server keyserver.ubuntu.com
+==> default: gpg: 
+==> default: key 1BE7A449: public key "Paul Tarjan <pt@fb.com>" imported
+==> default: gpg: 
+==> default: Total number processed: 1
+==> default: gpg: 
+==> default:               imported: 1
+==> default:   (RSA: 1)
+==> default: Ign http://archive.ubuntu.com trusty InRelease
+==> default: Ign http://archive.ubuntu.com trusty-updates InRelease
+==> default: Hit http://archive.ubuntu.com trusty Release.gpg
+==> default: Ign http://security.ubuntu.com trusty-security InRelease
+==> default: Get:1 http://dl.hhvm.com trusty InRelease [2,104 B]
+==> default: Get:2 http://archive.ubuntu.com trusty-updates Release.gpg [933 B]
+==> default: Hit http://archive.ubuntu.com trusty Release
+==> default: Get:3 http://security.ubuntu.com trusty-security Release.gpg [933 B]
+==> default: Get:4 http://archive.ubuntu.com trusty-updates Release [62.0 kB]
+==> default: Get:5 http://dl.hhvm.com trusty/main amd64 Packages [1,672 B]
+==> default: Get:6 http://security.ubuntu.com trusty-security Release [62.0 kB]
+==> default: Get:7 http://security.ubuntu.com trusty-security/main Sources [70.4 kB]
+==> default: Get:8 http://archive.ubuntu.com trusty/main Sources [1,064 kB]
+==> default: Get:9 http://security.ubuntu.com trusty-security/universe Sources [17.9 kB]
+==> default: Get:10 http://security.ubuntu.com trusty-security/main amd64 Packages [214 kB]
+==> default: Ign http://dl.hhvm.com trusty/main Translation-en_US
+==> default: Ign http://dl.hhvm.com trusty/main Translation-en
+==> default: Get:11 http://security.ubuntu.com trusty-security/universe amd64 Packages [87.3 kB]
+==> default: Get:12 http://security.ubuntu.com trusty-security/main Translation-en [109 kB]
+==> default: Get:13 http://security.ubuntu.com trusty-security/universe Translation-en [48.3 kB]
+==> default: Get:14 http://archive.ubuntu.com trusty/universe Sources [6,399 kB]
+==> default: Hit http://archive.ubuntu.com trusty/main amd64 Packages
+==> default: Hit http://archive.ubuntu.com trusty/universe amd64 Packages
+==> default: Hit http://archive.ubuntu.com trusty/main Translation-en
+==> default: Hit http://archive.ubuntu.com trusty/universe Translation-en
+==> default: Get:15 http://archive.ubuntu.com trusty-updates/main Sources [179 kB]
+==> default: Get:16 http://archive.ubuntu.com trusty-updates/universe Sources [104 kB]
+==> default: Get:17 http://archive.ubuntu.com trusty-updates/main amd64 Packages [440 kB]
+==> default: Get:18 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [252 kB]
+==> default: Get:19 http://archive.ubuntu.com trusty-updates/main Translation-en [210 kB]
+==> default: Get:20 http://archive.ubuntu.com trusty-updates/universe Translation-en [130 kB]
+==> default: Ign http://archive.ubuntu.com trusty/main Translation-en_US
+==> default: Ign http://archive.ubuntu.com trusty/universe Translation-en_US
+==> default: Fetched 9,455 kB in 1min 23s (114 kB/s)
+==> default: Reading package lists...
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   libapt-pkg-perl
+==> default: The following NEW packages will be installed:
+==> default:   apt-show-versions libapt-pkg-perl
+==> default: 0 upgraded, 2 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 120 kB of archives.
+==> default: After this operation, 438 kB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main libapt-pkg-perl amd64 0.1.29build1 [85.9 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty/universe apt-show-versions all 0.22.3 [33.9 kB]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 120 kB in 5s (20.3 kB/s)
+==> default: Selecting previously unselected package libapt-pkg-perl.
+==> default: (Reading database ... 60960 files and directories currently installed.)
+==> default: Preparing to unpack .../libapt-pkg-perl_0.1.29build1_amd64.deb ...
+==> default: Unpacking libapt-pkg-perl (0.1.29build1) ...
+==> default: Selecting previously unselected package apt-show-versions.
+==> default: Preparing to unpack .../apt-show-versions_0.22.3_all.deb ...
+==> default: Unpacking apt-show-versions (0.22.3) ...
+==> default: Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+==> default: Setting up libapt-pkg-perl (0.1.29build1) ...
+==> default: Setting up apt-show-versions (0.22.3) ...
+==> default: ** initializing cache. This may take a while **
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
+==> default:   libjpeg-turbo8 libjpeg8 libtiff5 libvpx1 libxslt1.1 nginx-common nginx-core
+==> default: Suggested packages:
+==> default:   libgd-tools fcgiwrap nginx-doc
+==> default: The following NEW packages will be installed:
+==> default:   fontconfig-config fonts-dejavu-core libfontconfig1 libgd3 libjbig0
+==> default:   libjpeg-turbo8 libjpeg8 libtiff5 libvpx1 libxslt1.1 nginx nginx-common
+==> default:   nginx-core
+==> default: 0 upgraded, 13 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 2,665 kB of archives.
+==> default: After this operation, 8,931 kB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main fonts-dejavu-core all 2.34-1ubuntu1 [1,024 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main fontconfig-config all 2.11.0-0ubuntu4.1 [47.4 kB]
+==> default: Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libfontconfig1 amd64 2.11.0-0ubuntu4.1 [123 kB]
+==> default: Get:4 http://archive.ubuntu.com/ubuntu/ trusty/main libjpeg-turbo8 amd64 1.3.0-0ubuntu2 [104 kB]
+==> default: Get:5 http://archive.ubuntu.com/ubuntu/ trusty/main libjpeg8 amd64 8c-2ubuntu8 [2,194 B]
+==> default: Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libjbig0 amd64 2.0-2ubuntu4.1 [26.1 kB]
+==> default: Get:7 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libtiff5 amd64 4.0.3-7ubuntu0.1 [142 kB]
+==> default: Get:8 http://archive.ubuntu.com/ubuntu/ trusty/main libvpx1 amd64 1.3.0-2 [556 kB]
+==> default: Get:9 http://archive.ubuntu.com/ubuntu/ trusty/main libgd3 amd64 2.1.0-3 [147 kB]
+==> default: Get:10 http://archive.ubuntu.com/ubuntu/ trusty/main libxslt1.1 amd64 1.1.28-2build1 [145 kB]
+==> default: Get:11 http://archive.ubuntu.com/ubuntu/ trusty-updates/main nginx-common all 1.4.6-1ubuntu3.1 [17.9 kB]
+==> default: Get:12 http://archive.ubuntu.com/ubuntu/ trusty-updates/main nginx-core amd64 1.4.6-1ubuntu3.1 [324 kB]
+==> default: Get:13 http://archive.ubuntu.com/ubuntu/ trusty-updates/main nginx all 1.4.6-1ubuntu3.1 [5,218 B]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 2,665 kB in 39s (67.4 kB/s)
+==> default: Selecting previously unselected package fonts-dejavu-core.
+==> default: (Reading database ... 61007 files and directories currently installed.)
+==> default: Preparing to unpack .../fonts-dejavu-core_2.34-1ubuntu1_all.deb ...
+==> default: Unpacking fonts-dejavu-core (2.34-1ubuntu1) ...
+==> default: Selecting previously unselected package fontconfig-config.
+==> default: Preparing to unpack .../fontconfig-config_2.11.0-0ubuntu4.1_all.deb ...
+==> default: Unpacking fontconfig-config (2.11.0-0ubuntu4.1) ...
+==> default: Selecting previously unselected package libfontconfig1:amd64.
+==> default: Preparing to unpack .../libfontconfig1_2.11.0-0ubuntu4.1_amd64.deb ...
+==> default: Unpacking libfontconfig1:amd64 (2.11.0-0ubuntu4.1) ...
+==> default: Selecting previously unselected package libjpeg-turbo8:amd64.
+==> default: Preparing to unpack .../libjpeg-turbo8_1.3.0-0ubuntu2_amd64.deb ...
+==> default: Unpacking libjpeg-turbo8:amd64 (1.3.0-0ubuntu2) ...
+==> default: Selecting previously unselected package libjpeg8:amd64.
+==> default: Preparing to unpack .../libjpeg8_8c-2ubuntu8_amd64.deb ...
+==> default: Unpacking libjpeg8:amd64 (8c-2ubuntu8) ...
+==> default: Selecting previously unselected package libjbig0:amd64.
+==> default: Preparing to unpack .../libjbig0_2.0-2ubuntu4.1_amd64.deb ...
+==> default: Unpacking libjbig0:amd64 (2.0-2ubuntu4.1) ...
+==> default: Selecting previously unselected package libtiff5:amd64.
+==> default: Preparing to unpack .../libtiff5_4.0.3-7ubuntu0.1_amd64.deb ...
+==> default: Unpacking libtiff5:amd64 (4.0.3-7ubuntu0.1) ...
+==> default: Selecting previously unselected package libvpx1:amd64.
+==> default: Preparing to unpack .../libvpx1_1.3.0-2_amd64.deb ...
+==> default: Unpacking libvpx1:amd64 (1.3.0-2) ...
+==> default: Selecting previously unselected package libgd3:amd64.
+==> default: Preparing to unpack .../libgd3_2.1.0-3_amd64.deb ...
+==> default: Unpacking libgd3:amd64 (2.1.0-3) ...
+==> default: Selecting previously unselected package libxslt1.1:amd64.
+==> default: Preparing to unpack .../libxslt1.1_1.1.28-2build1_amd64.deb ...
+==> default: Unpacking libxslt1.1:amd64 (1.1.28-2build1) ...
+==> default: Selecting previously unselected package nginx-common.
+==> default: Preparing to unpack .../nginx-common_1.4.6-1ubuntu3.1_all.deb ...
+==> default: Unpacking nginx-common (1.4.6-1ubuntu3.1) ...
+==> default: Selecting previously unselected package nginx-core.
+==> default: Preparing to unpack .../nginx-core_1.4.6-1ubuntu3.1_amd64.deb ...
+==> default: Unpacking nginx-core (1.4.6-1ubuntu3.1) ...
+==> default: Selecting previously unselected package nginx.
+==> default: Preparing to unpack .../nginx_1.4.6-1ubuntu3.1_all.deb ...
+==> default: Unpacking nginx (1.4.6-1ubuntu3.1) ...
+==> default: Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+==> default: Processing triggers for ureadahead (0.100.0-16) ...
+==> default: Processing triggers for ufw (0.34~rc-0ubuntu2) ...
+==> default: Setting up fonts-dejavu-core (2.34-1ubuntu1) ...
+==> default: Setting up fontconfig-config (2.11.0-0ubuntu4.1) ...
+==> default: Setting up libfontconfig1:amd64 (2.11.0-0ubuntu4.1) ...
+==> default: Setting up libjpeg-turbo8:amd64 (1.3.0-0ubuntu2) ...
+==> default: Setting up libjpeg8:amd64 (8c-2ubuntu8) ...
+==> default: Setting up libjbig0:amd64 (2.0-2ubuntu4.1) ...
+==> default: Setting up libtiff5:amd64 (4.0.3-7ubuntu0.1) ...
+==> default: Setting up libvpx1:amd64 (1.3.0-2) ...
+==> default: Setting up libgd3:amd64 (2.1.0-3) ...
+==> default: Setting up libxslt1.1:amd64 (1.1.28-2build1) ...
+==> default: Setting up nginx-common (1.4.6-1ubuntu3.1) ...
+==> default: Processing triggers for ureadahead (0.100.0-16) ...
+==> default: Processing triggers for ufw (0.34~rc-0ubuntu2) ...
+==> default: Setting up nginx-core (1.4.6-1ubuntu3.1) ...
+==> default: Setting up nginx (1.4.6-1ubuntu3.1) ...
+==> default: Processing triggers for libc-bin (2.19-0ubuntu6.5) ...
+==> default:  * Restarting nginx nginx
+==> default:    ...done.
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   php5-common php5-json
+==> default: Suggested packages:
+==> default:   php5-user-cache php-pear
+==> default: The following NEW packages will be installed:
+==> default:   php5-common php5-fpm php5-json
+==> default: 0 upgraded, 3 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 2,669 kB of archives.
+==> default: After this operation, 10.6 MB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main php5-json amd64 1.3.2-2build1 [34.4 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main php5-common amd64 5.5.9+dfsg-1ubuntu4.6 [443 kB]
+==> default: Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe php5-fpm amd64 5.5.9+dfsg-1ubuntu4.6 [2,191 kB]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 2,669 kB in 24s (110 kB/s)
+==> default: Selecting previously unselected package php5-json.
+==> default: (Reading database ... 61215 files and directories currently installed.)
+==> default: Preparing to unpack .../php5-json_1.3.2-2build1_amd64.deb ...
+==> default: Unpacking php5-json (1.3.2-2build1) ...
+==> default: Selecting previously unselected package php5-common.
+==> default: Preparing to unpack .../php5-common_5.5.9+dfsg-1ubuntu4.6_amd64.deb ...
+==> default: Unpacking php5-common (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Selecting previously unselected package php5-fpm.
+==> default: Preparing to unpack .../php5-fpm_5.5.9+dfsg-1ubuntu4.6_amd64.deb ...
+==> default: Unpacking php5-fpm (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Processing triggers for ureadahead (0.100.0-16) ...
+==> default: Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+==> default: Setting up php5-common (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Creating config file /etc/php5/mods-available/pdo.ini with new version
+==> default: php5_invoke: Enable module pdo for fpm SAPI
+==> default: Creating config file /etc/php5/mods-available/opcache.ini with new version
+==> default: php5_invoke: Enable module opcache for fpm SAPI
+==> default: Setting up php5-fpm (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Creating config file /etc/php5/fpm/php.ini with new version
+==> default: php5_invoke opcache: already enabled for fpm SAPI
+==> default: php5_invoke pdo: already enabled for fpm SAPI
+==> default: php5-fpm start/running, process 4653
+==> default: Setting up php5-json (1.3.2-2build1) ...
+==> default: php5_invoke: Enable module json for fpm SAPI
+==> default: Processing triggers for ureadahead (0.100.0-16) ...
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   libmysqlclient18 mysql-common
+==> default: The following NEW packages will be installed:
+==> default:   libmysqlclient18 mysql-common php5-mysql
+==> default: 0 upgraded, 3 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 672 kB of archives.
+==> default: After this operation, 3,930 kB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main mysql-common all 5.5.41-0ubuntu0.14.04.1 [14.1 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libmysqlclient18 amd64 5.5.41-0ubuntu0.14.04.1 [595 kB]
+==> default: Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main php5-mysql amd64 5.5.9+dfsg-1ubuntu4.6 [63.0 kB]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 672 kB in 6s (108 kB/s)
+==> default: Selecting previously unselected package mysql-common.
+==> default: (Reading database ... 61288 files and directories currently installed.)
+==> default: Preparing to unpack .../mysql-common_5.5.41-0ubuntu0.14.04.1_all.deb ...
+==> default: Unpacking mysql-common (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Selecting previously unselected package libmysqlclient18:amd64.
+==> default: Preparing to unpack .../libmysqlclient18_5.5.41-0ubuntu0.14.04.1_amd64.deb ...
+==> default: Unpacking libmysqlclient18:amd64 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Selecting previously unselected package php5-mysql.
+==> default: Preparing to unpack .../php5-mysql_5.5.9+dfsg-1ubuntu4.6_amd64.deb ...
+==> default: Unpacking php5-mysql (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Processing triggers for php5-fpm (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: php5-fpm stop/waiting
+==> default: php5-fpm start/running, process 4796
+==> default: Setting up mysql-common (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Setting up libmysqlclient18:amd64 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Setting up php5-mysql (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: Creating config file /etc/php5/mods-available/mysql.ini with new version
+==> default: php5_invoke: Enable module mysql for fpm SAPI
+==> default: Creating config file /etc/php5/mods-available/mysqli.ini with new version
+==> default: php5_invoke: Enable module mysqli for fpm SAPI
+==> default: Creating config file /etc/php5/mods-available/pdo_mysql.ini with new version
+==> default: php5_invoke: Enable module pdo_mysql for fpm SAPI
+==> default: Processing triggers for libc-bin (2.19-0ubuntu6.5) ...
+==> default: Processing triggers for php5-fpm (5.5.9+dfsg-1ubuntu4.6) ...
+==> default: php5-fpm stop/waiting
+==> default: php5-fpm start/running, process 5318
+==> default: wordpress/
+==> default: wordpress/wp-settings.php
+==> default: wordpress/wp-cron.php
+==> default: wordpress/wp-comments-post.php
+==> default: wordpress/wp-activate.php
+==> default: wordpress/wp-admin/
+==> default: wordpress/wp-admin/link-parse-opml.php
+==> default: wordpress/wp-admin/js/
+==> default: wordpress/wp-admin/js/editor.js
+==> default: wordpress/wp-admin/js/user-profile.min.js
+==> default: wordpress/wp-admin/js/word-count.min.js
+==> default: wordpress/wp-admin/js/image-edit.js
+==> default: wordpress/wp-admin/js/updates.min.js
+==> default: wordpress/wp-admin/js/postbox.min.js
+==> default: wordpress/wp-admin/js/nav-menu.min.js
+==> default: wordpress/wp-admin/js/theme.min.js
+==> default: wordpress/wp-admin/js/custom-header.js
+==> default: wordpress/wp-admin/js/media-upload.js
+==> default: wordpress/wp-admin/js/color-picker.js
+==> default: wordpress/wp-admin/js/iris.min.js
+==> default: wordpress/wp-admin/js/farbtastic.js
+==> default: wordpress/wp-admin/js/comment.js
+==> default: wordpress/wp-admin/js/common.js
+==> default: wordpress/wp-admin/js/inline-edit-tax.min.js
+==> default: wordpress/wp-admin/js/media.min.js
+==> default: wordpress/wp-admin/js/edit-comments.js
+==> default: wordpress/wp-admin/js/plugin-install.min.js
+==> default: wordpress/wp-admin/js/xfn.js
+==> default: wordpress/wp-admin/js/set-post-thumbnail.js
+==> default: wordpress/wp-admin/js/word-count.js
+==> default: wordpress/wp-admin/js/inline-edit-post.js
+==> default: wordpress/wp-admin/js/accordion.js
+==> default: wordpress/wp-admin/js/link.min.js
+==> default: wordpress/wp-admin/js/post.min.js
+==> default: wordpress/wp-admin/js/inline-edit-post.min.js
+==> default: wordpress/wp-admin/js/set-post-thumbnail.min.js
+==> default: wordpress/wp-admin/js/media-gallery.min.js
+==> default: wordpress/wp-admin/js/dashboard.min.js
+==> default: wordpress/wp-admin/js/postbox.js
+==> default: wordpress/wp-admin/js/tags.js
+==> default: wordpress/wp-admin/js/dashboard.js
+==> default: wordpress/wp-admin/js/link.js
+==> default: wordpress/wp-admin/js/tags.min.js
+==> default: wordpress/wp-admin/js/customize-controls.js
+==> default: wordpress/wp-admin/js/comment.min.js
+==> default: wordpress/wp-admin/js/user-suggest.js
+==> default: wordpress/wp-admin/js/common.min.js
+==> default: wordpress/wp-admin/js/editor-expand.js
+==> default: wordpress/wp-admin/js/updates.js
+==> default: wordpress/wp-admin/js/revisions.min.js
+==> default: wordpress/wp-admin/js/user-profile.js
+==> default: wordpress/wp-admin/js/media.js
+==> default: wordpress/wp-admin/js/image-edit.min.js
+==> default: wordpress/wp-admin/js/widgets.min.js
+==> default: wordpress/wp-admin/js/wp-fullscreen.js
+==> default: wordpress/wp-admin/js/accordion.min.js
+==> default: wordpress/wp-admin/js/revisions.js
+==> default: wordpress/wp-admin/js/plugin-install.js
+==> default: wordpress/wp-admin/js/post.js
+==> default: wordpress/wp-admin/js/custom-background.min.js
+==> default: wordpress/wp-admin/js/wp-fullscreen.min.js
+==> default: wordpress/wp-admin/js/custom-background.js
+==> default: wordpress/wp-admin/js/gallery.js
+==> default: wordpress/wp-admin/js/widgets.js
+==> default: wordpress/wp-admin/js/language-chooser.min.js
+==> default: wordpress/wp-admin/js/svg-painter.min.js
+==> default: wordpress/wp-admin/js/customize-widgets.min.js
+==> default: wordpress/wp-admin/js/theme.js
+==> default: wordpress/wp-admin/js/password-strength-meter.js
+==> default: wordpress/wp-admin/js/editor-expand.min.js
+==> default: wordpress/wp-admin/js/svg-painter.js
+==> default: wordpress/wp-admin/js/color-picker.min.js
+==> default: wordpress/wp-admin/js/language-chooser.js
+==> default: wordpress/wp-admin/js/gallery.min.js
+==> default: wordpress/wp-admin/js/media-upload.min.js
+==> default: wordpress/wp-admin/js/password-strength-meter.min.js
+==> default: wordpress/wp-admin/js/editor.min.js
+==> default: wordpress/wp-admin/js/media-gallery.js
+==> default: wordpress/wp-admin/js/user-suggest.min.js
+==> default: wordpress/wp-admin/js/nav-menu.js
+==> default: wordpress/wp-admin/js/edit-comments.min.js
+==> default: wordpress/wp-admin/js/customize-controls.min.js
+==> default: wordpress/wp-admin/js/customize-widgets.js
+==> default: wordpress/wp-admin/js/inline-edit-tax.js
+==> default: wordpress/wp-admin/js/xfn.min.js
+==> default: wordpress/wp-admin/options-head.php
+==> default: wordpress/wp-admin/admin.php
+==> default: wordpress/wp-admin/ms-upgrade-network.php
+==> default: wordpress/wp-admin/upgrade.php
+==> default: wordpress/wp-admin/press-this.php
+==> default: wordpress/wp-admin/post.php
+==> default: wordpress/wp-admin/admin-header.php
+==> default: wordpress/wp-admin/ms-users.php
+==> default: wordpress/wp-admin/maint/
+==> default: wordpress/wp-admin/maint/repair.php
+==> default: wordpress/wp-admin/css/
+==> default: wordpress/wp-admin/css/ie.css
+==> default: wordpress/wp-admin/css/color-picker-rtl.min.css
+==> default: wordpress/wp-admin/css/wp-admin.min.css
+==> default: wordpress/wp-admin/css/ie-rtl.min.css
+==> default: wordpress/wp-admin/css/install.css
+==> default: wordpress/wp-admin/css/dashboard-rtl.css
+==> default: wordpress/wp-admin/css/farbtastic.css
+==> default: wordpress/wp-admin/css/install-rtl.min.css
+==> default: wordpress/wp-admin/css/install.min.css
+==> default: wordpress/wp-admin/css/edit.css
+==> default: wordpress/wp-admin/css/wp-admin-rtl.min.css
+==> default: wordpress/wp-admin/css/wp-admin-rtl.css
+==> default: wordpress/wp-admin/css/widgets-rtl.css
+==> default: wordpress/wp-admin/css/press-this-rtl.css
+==> default: wordpress/wp-admin/css/widgets.css
+==> default: wordpress/wp-admin/css/deprecated-media-rtl.min.css
+==> default: wordpress/wp-admin/css/press-this.css
+==> default: wordpress/wp-admin/css/customize-controls.css
+==> default: wordpress/wp-admin/css/nav-menus.css
+==> default: wordpress/wp-admin/css/customize-controls-rtl.min.css
+==> default: wordpress/wp-admin/css/farbtastic-rtl.css
+==> default: wordpress/wp-admin/css/edit-rtl.css
+==> default: wordpress/wp-admin/css/colors/
+==> default: wordpress/wp-admin/css/colors/blue/
+==> default: wordpress/wp-admin/css/colors/blue/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/blue/colors.scss
+==> default: wordpress/wp-admin/css/colors/blue/colors.min.css
+==> default: wordpress/wp-admin/css/colors/blue/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/blue/colors.css
+==> default: wordpress/wp-admin/css/colors/ectoplasm/
+==> default: wordpress/wp-admin/css/colors/ectoplasm/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/ectoplasm/colors.scss
+==> default: wordpress/wp-admin/css/colors/ectoplasm/colors.min.css
+==> default: wordpress/wp-admin/css/colors/ectoplasm/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/ectoplasm/colors.css
+==> default: wordpress/wp-admin/css/colors/sunrise/
+==> default: wordpress/wp-admin/css/colors/sunrise/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/sunrise/colors.scss
+==> default: wordpress/wp-admin/css/colors/sunrise/colors.min.css
+==> default: wordpress/wp-admin/css/colors/sunrise/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/sunrise/colors.css
+==> default: wordpress/wp-admin/css/colors/midnight/
+==> default: wordpress/wp-admin/css/colors/midnight/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/midnight/colors.scss
+==> default: wordpress/wp-admin/css/colors/midnight/colors.min.css
+==> default: wordpress/wp-admin/css/colors/midnight/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/midnight/colors.css
+==> default: wordpress/wp-admin/css/colors/light/
+==> default: wordpress/wp-admin/css/colors/light/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/light/colors.scss
+==> default: wordpress/wp-admin/css/colors/light/colors.min.css
+==> default: wordpress/wp-admin/css/colors/light/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/light/colors.css
+==> default: wordpress/wp-admin/css/colors/_mixins.scss
+==> default: wordpress/wp-admin/css/colors/_admin.scss
+==> default: wordpress/wp-admin/css/colors/_variables.scss
+==> default: wordpress/wp-admin/css/colors/ocean/
+==> default: wordpress/wp-admin/css/colors/ocean/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/ocean/colors.scss
+==> default: wordpress/wp-admin/css/colors/ocean/colors.min.css
+==> default: wordpress/wp-admin/css/colors/ocean/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/ocean/colors.css
+==> default: wordpress/wp-admin/css/colors/coffee/
+==> default: wordpress/wp-admin/css/colors/coffee/colors-rtl.css
+==> default: wordpress/wp-admin/css/colors/coffee/colors.scss
+==> default: wordpress/wp-admin/css/colors/coffee/colors.min.css
+==> default: wordpress/wp-admin/css/colors/coffee/colors-rtl.min.css
+==> default: wordpress/wp-admin/css/colors/coffee/colors.css
+==> default: wordpress/wp-admin/css/deprecated-media-rtl.css
+==> default: wordpress/wp-admin/css/about.css
+==> default: wordpress/wp-admin/css/color-picker.css
+==> default: wordpress/wp-admin/css/nav-menus-rtl.css
+==> default: wordpress/wp-admin/css/revisions.css
+==> default: wordpress/wp-admin/css/l10n-rtl.css
+==> default: wordpress/wp-admin/css/login.min.css
+==> default: wordpress/wp-admin/css/list-tables.css
+==> default: wordpress/wp-admin/css/color-picker-rtl.css
+==> default: wordpress/wp-admin/css/dashboard.css
+==> default: wordpress/wp-admin/css/forms.css
+==> default: wordpress/wp-admin/css/deprecated-media.css
+==> default: wordpress/wp-admin/css/common.css
+==> default: wordpress/wp-admin/css/admin-menu.css
+==> default: wordpress/wp-admin/css/ie.min.css
+==> default: wordpress/wp-admin/css/media-rtl.css
+==> default: wordpress/wp-admin/css/ie-rtl.css
+==> default: wordpress/wp-admin/css/admin-menu-rtl.css
+==> default: wordpress/wp-admin/css/common-rtl.css
+==> default: wordpress/wp-admin/css/customize-widgets.min.css
+==> default: wordpress/wp-admin/css/list-tables-rtl.css
+==> default: wordpress/wp-admin/css/revisions-rtl.css
+==> default: wordpress/wp-admin/css/login-rtl.min.css
+==> default: wordpress/wp-admin/css/login-rtl.css
+==> default: wordpress/wp-admin/css/wp-admin.css
+==> default: wordpress/wp-admin/css/forms-rtl.css
+==> default: wordpress/wp-admin/css/customize-widgets-rtl.min.css
+==> default: wordpress/wp-admin/css/l10n.css
+==> default: wordpress/wp-admin/css/customize-widgets-rtl.css
+==> default: wordpress/wp-admin/css/themes-rtl.css
+==> default: wordpress/wp-admin/css/customize-controls.min.css
+==> default: wordpress/wp-admin/css/customize-widgets.css
+==> default: wordpress/wp-admin/css/themes.css
+==> default: wordpress/wp-admin/css/customize-controls-rtl.css
+==> default: wordpress/wp-admin/css/install-rtl.css
+==> default: wordpress/wp-admin/css/media.css
+==> default: wordpress/wp-admin/css/login.css
+==> default: wordpress/wp-admin/css/deprecated-media.min.css
+==> default: wordpress/wp-admin/css/color-picker.min.css
+==> default: wordpress/wp-admin/css/about-rtl.css
+==> default: wordpress/wp-admin/post-new.php
+==> default: wordpress/wp-admin/options-writing.php
+==> default: wordpress/wp-admin/themes.php
+==> default: wordpress/wp-admin/async-upload.php
+==> default: wordpress/wp-admin/edit-tags.php
+==> default: wordpress/wp-admin/theme-editor.php
+==> default: wordpress/wp-admin/admin-functions.php
+==> default: wordpress/wp-admin/options-media.php
+==> default: wordpress/wp-admin/update-core.php
+==> default: wordpress/wp-admin/credits.php
+==> default: wordpress/wp-admin/options-general.php
+==> default: wordpress/wp-admin/plugins.php
+==> default: wordpress/wp-admin/admin-ajax.php
+==> default: wordpress/wp-admin/export.php
+==> default: wordpress/wp-admin/ms-themes.php
+==> default: wordpress/wp-admin/includes/
+==> default: wordpress/wp-admin/includes/admin.php
+==> default: wordpress/wp-admin/includes/upgrade.php
+==> default: wordpress/wp-admin/includes/bookmark.php
+==> default: wordpress/wp-admin/includes/class-wp-posts-list-table.php
+==> default: wordpress/wp-admin/includes/post.php
+==> default: wordpress/wp-admin/includes/ms.php
+==> default: wordpress/wp-admin/includes/class-ftp-pure.php
+==> default: wordpress/wp-admin/includes/class-wp-filesystem-ftpext.php
+==> default: wordpress/wp-admin/includes/template.php
+==> default: wordpress/wp-admin/includes/list-table.php
+==> default: wordpress/wp-admin/includes/screen.php
+==> default: wordpress/wp-admin/includes/class-ftp.php
+==> default: wordpress/wp-admin/includes/class-wp-filesystem-ssh2.php
+==> default: wordpress/wp-admin/includes/class-wp-ms-sites-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-comments-list-table.php
+==> default: wordpress/wp-admin/includes/update-core.php
+==> default: wordpress/wp-admin/includes/continents-cities.php
+==> default: wordpress/wp-admin/includes/export.php
+==> default: wordpress/wp-admin/includes/class-wp-theme-install-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-ms-themes-list-table.php
+==> default: wordpress/wp-admin/includes/class-ftp-sockets.php
+==> default: wordpress/wp-admin/includes/plugin.php
+==> default: wordpress/wp-admin/includes/ms-deprecated.php
+==> default: wordpress/wp-admin/includes/menu.php
+==> default: wordpress/wp-admin/includes/media.php
+==> default: wordpress/wp-admin/includes/revision.php
+==> default: wordpress/wp-admin/includes/deprecated.php
+==> default: wordpress/wp-admin/includes/class-wp-upgrader.php
+==> default: wordpress/wp-admin/includes/class-wp-upgrader-skins.php
+==> default: wordpress/wp-admin/includes/schema.php
+==> default: wordpress/wp-admin/includes/image-edit.php
+==> default: wordpress/wp-admin/includes/dashboard.php
+==> default: wordpress/wp-admin/includes/theme-install.php
+==> default: wordpress/wp-admin/includes/class-wp-plugin-install-list-table.php
+==> default: wordpress/wp-admin/includes/translation-install.php
+==> default: wordpress/wp-admin/includes/misc.php
+==> default: wordpress/wp-admin/includes/class-wp-links-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-filesystem-base.php
+==> default: wordpress/wp-admin/includes/meta-boxes.php
+==> default: wordpress/wp-admin/includes/class-wp-filesystem-ftpsockets.php
+==> default: wordpress/wp-admin/includes/class-wp-ms-users-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-terms-list-table.php
+==> default: wordpress/wp-admin/includes/nav-menu.php
+==> default: wordpress/wp-admin/includes/import.php
+==> default: wordpress/wp-admin/includes/file.php
+==> default: wordpress/wp-admin/includes/class-pclzip.php
+==> default: wordpress/wp-admin/includes/class-wp-filesystem-direct.php
+==> default: wordpress/wp-admin/includes/user.php
+==> default: wordpress/wp-admin/includes/class-wp-importer.php
+==> default: wordpress/wp-admin/includes/class-wp-users-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-plugins-list-table.php
+==> default: wordpress/wp-admin/includes/image.php
+==> default: wordpress/wp-admin/includes/taxonomy.php
+==> default: wordpress/wp-admin/includes/plugin-install.php
+==> default: wordpress/wp-admin/includes/theme.php
+==> default: wordpress/wp-admin/includes/class-wp-media-list-table.php
+==> default: wordpress/wp-admin/includes/class-wp-themes-list-table.php
+==> default: wordpress/wp-admin/includes/widgets.php
+==> default: wordpress/wp-admin/includes/class-wp-list-table.php
+==> default: wordpress/wp-admin/includes/ajax-actions.php
+==> default: wordpress/wp-admin/includes/update.php
+==> default: wordpress/wp-admin/includes/comment.php
+==> default: wordpress/wp-admin/user-edit.php
+==> default: wordpress/wp-admin/install.php
+==> default: wordpress/wp-admin/user-new.php
+==> default: wordpress/wp-admin/images/
+==> default: wordpress/wp-admin/images/menu-vs.png
+==> default: wordpress/wp-admin/images/xit.gif
+==> default: wordpress/wp-admin/images/align-none-2x.png
+==> default: wordpress/wp-admin/images/align-center.png
+==> default: wordpress/wp-admin/images/align-none.png
+==> default: wordpress/wp-admin/images/media-button-image.gif
+==> default: wordpress/wp-admin/images/no.png
+==> default: wordpress/wp-admin/images/w-logo-white.png
+==> default: wordpress/wp-admin/images/icons32.png
+==> default: wordpress/wp-admin/images/post-formats32.png
+==> default: wordpress/wp-admin/images/imgedit-icons-2x.png
+==> default: wordpress/wp-admin/images/se.png
+==> default: wordpress/wp-admin/images/date-button-2x.gif
+==> default: wordpress/wp-admin/images/resize.gif
+==> default: wordpress/wp-admin/images/spinner-2x.gif
+==> default: wordpress/wp-admin/images/wordpress-logo.svg
+==> default: wordpress/wp-admin/images/resize-2x.gif
+==> default: wordpress/wp-admin/images/comment-grey-bubble.png
+==> default: wordpress/wp-admin/images/arrows.png
+==> default: wordpress/wp-admin/images/media-button-other.gif
+==> default: wordpress/wp-admin/images/icons32-vs-2x.png
+==> default: wordpress/wp-admin/images/align-left-2x.png
+==> default: wordpress/wp-admin/images/sort.gif
+==> default: wordpress/wp-admin/images/bubble_bg.gif
+==> default: wordpress/wp-admin/images/wordpress-logo-white.svg
+==> default: wordpress/wp-admin/images/media-button-music.gif
+==> default: wordpress/wp-admin/images/list-2x.png
+==> default: wordpress/wp-admin/images/sort-2x.gif
+==> default: wordpress/wp-admin/images/loading.gif
+==> default: wordpress/wp-admin/images/wpspin_light-2x.gif
+==> default: wordpress/wp-admin/images/post-formats-vs.png
+==> default: wordpress/wp-admin/images/wpspin_light.gif
+==> default: wordpress/wp-admin/images/bubble_bg-2x.gif
+==> default: wordpress/wp-admin/images/post-formats.png
+==> default: wordpress/wp-admin/images/menu-2x.png
+==> default: wordpress/wp-admin/images/marker.png
+==> default: wordpress/wp-admin/images/stars-2x.png
+==> default: wordpress/wp-admin/images/media-button-2x.png
+==> default: wordpress/wp-admin/images/stars.png
+==> default: wordpress/wp-admin/images/resize-rtl-2x.gif
+==> default: wordpress/wp-admin/images/align-right.png
+==> default: wordpress/wp-admin/images/w-logo-blue.png
+==> default: wordpress/wp-admin/images/icons32-vs.png
+==> default: wordpress/wp-admin/images/comment-grey-bubble-2x.png
+==> default: wordpress/wp-admin/images/wheel.png
+==> default: wordpress/wp-admin/images/align-left.png
+==> default: wordpress/wp-admin/images/media-button.png
+==> default: wordpress/wp-admin/images/menu-vs-2x.png
+==> default: wordpress/wp-admin/images/spinner.gif
+==> default: wordpress/wp-admin/images/wordpress-logo.png
+==> default: wordpress/wp-admin/images/resize-rtl.gif
+==> default: wordpress/wp-admin/images/xit-2x.gif
+==> default: wordpress/wp-admin/images/media-button-video.gif
+==> default: wordpress/wp-admin/images/mask.png
+==> default: wordpress/wp-admin/images/post-formats32-vs.png
+==> default: wordpress/wp-admin/images/align-center-2x.png
+==> default: wordpress/wp-admin/images/align-right-2x.png
+==> default: wordpress/wp-admin/images/yes.png
+==> default: wordpress/wp-admin/images/date-button.gif
+==> default: wordpress/wp-admin/images/list.png
+==> default: wordpress/wp-admin/images/arrows-2x.png
+==> default: wordpress/wp-admin/images/generic.png
+==> default: wordpress/wp-admin/images/imgedit-icons.png
+==> default: wordpress/wp-admin/images/menu.png
+==> default: wordpress/wp-admin/images/icons32-2x.png
+==> default: wordpress/wp-admin/media-new.php
+==> default: wordpress/wp-admin/load-scripts.php
+==> default: wordpress/wp-admin/link-add.php
+==> default: wordpress/wp-admin/moderation.php
+==> default: wordpress/wp-admin/edit-form-comment.php
+==> default: wordpress/wp-admin/options-permalink.php
+==> default: wordpress/wp-admin/my-sites.php
+==> default: wordpress/wp-admin/custom-header.php
+==> default: wordpress/wp-admin/customize.php
+==> default: wordpress/wp-admin/admin-post.php
+==> default: wordpress/wp-admin/menu.php
+==> default: wordpress/wp-admin/edit-form-advanced.php
+==> default: wordpress/wp-admin/edit-tag-form.php
+==> default: wordpress/wp-admin/upgrade-functions.php
+==> default: wordpress/wp-admin/media.php
+==> default: wordpress/wp-admin/revision.php
+==> default: wordpress/wp-admin/menu-header.php
+==> default: wordpress/wp-admin/link-manager.php
+==> default: wordpress/wp-admin/ms-options.php
+==> default: wordpress/wp-admin/plugin-editor.php
+==> default: wordpress/wp-admin/media-upload.php
+==> default: wordpress/wp-admin/nav-menus.php
+==> default: wordpress/wp-admin/theme-install.php
+==> default: wordpress/wp-admin/network.php
+==> default: wordpress/wp-admin/edit.php
+==> default: wordpress/wp-admin/ms-delete-site.php
+==> default: wordpress/wp-admin/options-reading.php
+==> default: wordpress/wp-admin/index.php
+==> default: wordpress/wp-admin/ms-sites.php
+==> default: wordpress/wp-admin/link.php
+==> default: wordpress/wp-admin/profile.php
+==> default: wordpress/wp-admin/edit-link-form.php
+==> default: wordpress/wp-admin/network/
+==> default: wordpress/wp-admin/network/admin.php
+==> default: wordpress/wp-admin/network/upgrade.php
+==> default: wordpress/wp-admin/network/site-users.php
+==> default: wordpress/wp-admin/network/setup.php
+==> default: wordpress/wp-admin/network/themes.php
+==> default: wordpress/wp-admin/network/theme-editor.php
+==> default: wordpress/wp-admin/network/update-core.php
+==> default: wordpress/wp-admin/network/credits.php
+==> default: wordpress/wp-admin/network/plugins.php
+==> default: wordpress/wp-admin/network/user-edit.php
+==> default: wordpress/wp-admin/network/site-new.php
+==> default: wordpress/wp-admin/network/sites.php
+==> default: wordpress/wp-admin/network/user-new.php
+==> default: wordpress/wp-admin/network/settings.php
+==> default: wordpress/wp-admin/network/site-themes.php
+==> default: wordpress/wp-admin/network/menu.php
+==> default: wordpress/wp-admin/network/site-info.php
+==> default: wordpress/wp-admin/network/plugin-editor.php
+==> default: wordpress/wp-admin/network/theme-install.php
+==> default: wordpress/wp-admin/network/edit.php
+==> default: wordpress/wp-admin/network/index.php
+==> default: wordpress/wp-admin/network/profile.php
+==> default: wordpress/wp-admin/network/site-settings.php
+==> default: wordpress/wp-admin/network/users.php
+==> default: wordpress/wp-admin/network/plugin-install.php
+==> default: wordpress/wp-admin/network/about.php
+==> default: wordpress/wp-admin/network/update.php
+==> default: wordpress/wp-admin/network/freedoms.php
+==> default: wordpress/wp-admin/import.php
+==> default: wordpress/wp-admin/user/
+==> default: wordpress/wp-admin/user/admin.php
+==> default: wordpress/wp-admin/user/credits.php
+==> default: wordpress/wp-admin/user/user-edit.php
+==> default: wordpress/wp-admin/user/menu.php
+==> default: wordpress/wp-admin/user/index.php
+==> default: wordpress/wp-admin/user/profile.php
+==> default: wordpress/wp-admin/user/about.php
+==> default: wordpress/wp-admin/user/freedoms.php
+==> default: wordpress/wp-admin/options.php
+==> default: wordpress/wp-admin/users.php
+==> default: wordpress/wp-admin/ms-admin.php
+==> default: wordpress/wp-admin/tools.php
+==> default: wordpress/wp-admin/admin-footer.php
+==> default: wordpress/wp-admin/plugin-install.php
+==> default: wordpress/wp-admin/edit-comments.php
+==> default: wordpress/wp-admin/install-helper.php
+==> default: wordpress/wp-admin/custom-background.php
+==> default: wordpress/wp-admin/widgets.php
+==> default: wordpress/wp-admin/about.php
+==> default: wordpress/wp-admin/setup-config.php
+==> default: wordpress/wp-admin/options-discussion.php
+==> default: wordpress/wp-admin/ms-edit.php
+==> default: wordpress/wp-admin/load-styles.php
+==> default: wordpress/wp-admin/upload.php
+==> default: wordpress/wp-admin/update.php
+==> default: wordpress/wp-admin/comment.php
+==> default: wordpress/wp-admin/freedoms.php
+==> default: wordpress/wp-mail.php
+==> default: wordpress/wp-content/
+==> default: wordpress/wp-content/themes/
+==> default: wordpress/wp-content/themes/twentyfifteen/
+==> default: wordpress/wp-content/themes/twentyfifteen/js/
+==> default: wordpress/wp-content/themes/twentyfifteen/js/color-scheme-control.js
+==> default: wordpress/wp-content/themes/twentyfifteen/js/customize-preview.js
+==> default: wordpress/wp-content/themes/twentyfifteen/js/keyboard-image-navigation.js
+==> default: wordpress/wp-content/themes/twentyfifteen/js/functions.js
+==> default: wordpress/wp-content/themes/twentyfifteen/js/html5.js
+==> default: wordpress/wp-content/themes/twentyfifteen/js/skip-link-focus-fix.js
+==> default: wordpress/wp-content/themes/twentyfifteen/content-page.php
+==> default: wordpress/wp-content/themes/twentyfifteen/archive.php
+==> default: wordpress/wp-content/themes/twentyfifteen/comments.php
+==> default: wordpress/wp-content/themes/twentyfifteen/screenshot.png
+==> default: wordpress/wp-content/themes/twentyfifteen/content-search.php
+==> default: wordpress/wp-content/themes/twentyfifteen/css/
+==> default: wordpress/wp-content/themes/twentyfifteen/css/ie.css
+==> default: wordpress/wp-content/themes/twentyfifteen/css/editor-style.css
+==> default: wordpress/wp-content/themes/twentyfifteen/css/ie7.css
+==> default: wordpress/wp-content/themes/twentyfifteen/content-none.php
+==> default: wordpress/wp-content/themes/twentyfifteen/sidebar.php
+==> default: wordpress/wp-content/themes/twentyfifteen/content-link.php
+==> default: wordpress/wp-content/themes/twentyfifteen/inc/
+==> default: wordpress/wp-content/themes/twentyfifteen/inc/template-tags.php
+==> default: wordpress/wp-content/themes/twentyfifteen/inc/back-compat.php
+==> default: wordpress/wp-content/themes/twentyfifteen/inc/customizer.php
+==> default: wordpress/wp-content/themes/twentyfifteen/inc/custom-header.php
+==> default: wordpress/wp-content/themes/twentyfifteen/page.php
+==> default: wordpress/wp-content/themes/twentyfifteen/functions.php
+==> default: wordpress/wp-content/themes/twentyfifteen/footer.php
+==> default: wordpress/wp-content/themes/twentyfifteen/readme.txt
+==> default: wordpress/wp-content/themes/twentyfifteen/404.php
+==> default: wordpress/wp-content/themes/twentyfifteen/single.php
+==> default: wordpress/wp-content/themes/twentyfifteen/author-bio.php
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/COPYING.txt
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/Genericons.ttf
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/example.html
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/LICENSE.txt
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/README.md
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/genericons.css
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/Genericons.svg
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/Genericons.eot
+==> default: wordpress/wp-content/themes/twentyfifteen/genericons/Genericons.woff
+==> default: wordpress/wp-content/themes/twentyfifteen/style.css
+==> default: wordpress/wp-content/themes/twentyfifteen/index.php
+==> default: wordpress/wp-content/themes/twentyfifteen/rtl.css
+==> default: wordpress/wp-content/themes/twentyfifteen/search.php
+==> default: wordpress/wp-content/themes/twentyfifteen/languages/
+==> default: wordpress/wp-content/themes/twentyfifteen/languages/twentyfifteen.pot
+==> default: wordpress/wp-content/themes/twentyfifteen/image.php
+==> default: wordpress/wp-content/themes/twentyfifteen/header.php
+==> default: wordpress/wp-content/themes/twentyfifteen/content.php
+==> default: wordpress/wp-content/themes/twentyfourteen/
+==> default: wordpress/wp-content/themes/twentyfourteen/js/
+==> default: wordpress/wp-content/themes/twentyfourteen/js/featured-content-admin.js
+==> default: wordpress/wp-content/themes/twentyfourteen/js/keyboard-image-navigation.js
+==> default: wordpress/wp-content/themes/twentyfourteen/js/functions.js
+==> default: wordpress/wp-content/themes/twentyfourteen/js/customizer.js
+==> default: wordpress/wp-content/themes/twentyfourteen/js/slider.js
+==> default: wordpress/wp-content/themes/twentyfourteen/js/html5.js
+==> default: wordpress/wp-content/themes/twentyfourteen/content-page.php
+==> default: wordpress/wp-content/themes/twentyfourteen/archive.php
+==> default: wordpress/wp-content/themes/twentyfourteen/comments.php
+==> default: wordpress/wp-content/themes/twentyfourteen/tag.php
+==> default: wordpress/wp-content/themes/twentyfourteen/screenshot.png
+==> default: wordpress/wp-content/themes/twentyfourteen/css/
+==> default: wordpress/wp-content/themes/twentyfourteen/css/ie.css
+==> default: wordpress/wp-content/themes/twentyfourteen/css/editor-style.css
+==> default: wordpress/wp-content/themes/twentyfourteen/content-none.php
+==> default: wordpress/wp-content/themes/twentyfourteen/sidebar.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-link.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/template-tags.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/back-compat.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/customizer.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/custom-header.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/featured-content.php
+==> default: wordpress/wp-content/themes/twentyfourteen/inc/widgets.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-video.php
+==> default: wordpress/wp-content/themes/twentyfourteen/category.php
+==> default: wordpress/wp-content/themes/twentyfourteen/page.php
+==> default: wordpress/wp-content/themes/twentyfourteen/sidebar-footer.php
+==> default: wordpress/wp-content/themes/twentyfourteen/page-templates/
+==> default: wordpress/wp-content/themes/twentyfourteen/page-templates/contributors.php
+==> default: wordpress/wp-content/themes/twentyfourteen/page-templates/full-width.php
+==> default: wordpress/wp-content/themes/twentyfourteen/functions.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-audio.php
+==> default: wordpress/wp-content/themes/twentyfourteen/footer.php
+==> default: wordpress/wp-content/themes/twentyfourteen/images/
+==> default: wordpress/wp-content/themes/twentyfourteen/images/pattern-light.svg
+==> default: wordpress/wp-content/themes/twentyfourteen/images/pattern-dark.svg
+==> default: wordpress/wp-content/themes/twentyfourteen/404.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-featured-post.php
+==> default: wordpress/wp-content/themes/twentyfourteen/author.php
+==> default: wordpress/wp-content/themes/twentyfourteen/single.php
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/Genericons-Regular.otf
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/font/
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/font/genericons-regular-webfont.eot
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/font/genericons-regular-webfont.woff
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/font/genericons-regular-webfont.ttf
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/font/genericons-regular-webfont.svg
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/COPYING.txt
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/example.html
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/README.txt
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/LICENSE.txt
+==> default: wordpress/wp-content/themes/twentyfourteen/genericons/genericons.css
+==> default: wordpress/wp-content/themes/twentyfourteen/taxonomy-post_format.php
+==> default: wordpress/wp-content/themes/twentyfourteen/style.css
+==> default: wordpress/wp-content/themes/twentyfourteen/index.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-gallery.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-aside.php
+==> default: wordpress/wp-content/themes/twentyfourteen/featured-content.php
+==> default: wordpress/wp-content/themes/twentyfourteen/rtl.css
+==> default: wordpress/wp-content/themes/twentyfourteen/search.php
+==> default: wordpress/wp-content/themes/twentyfourteen/languages/
+==> default: wordpress/wp-content/themes/twentyfourteen/languages/twentyfourteen.pot
+==> default: wordpress/wp-content/themes/twentyfourteen/sidebar-content.php
+==> default: wordpress/wp-content/themes/twentyfourteen/image.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-quote.php
+==> default: wordpress/wp-content/themes/twentyfourteen/header.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content.php
+==> default: wordpress/wp-content/themes/twentyfourteen/content-image.php
+==> default: wordpress/wp-content/themes/twentythirteen/
+==> default: wordpress/wp-content/themes/twentythirteen/js/
+==> default: wordpress/wp-content/themes/twentythirteen/js/theme-customizer.js
+==> default: wordpress/wp-content/themes/twentythirteen/js/functions.js
+==> default: wordpress/wp-content/themes/twentythirteen/js/html5.js
+==> default: wordpress/wp-content/themes/twentythirteen/archive.php
+==> default: wordpress/wp-content/themes/twentythirteen/comments.php
+==> default: wordpress/wp-content/themes/twentythirteen/tag.php
+==> default: wordpress/wp-content/themes/twentythirteen/screenshot.png
+==> default: wordpress/wp-content/themes/twentythirteen/css/
+==> default: wordpress/wp-content/themes/twentythirteen/css/ie.css
+==> default: wordpress/wp-content/themes/twentythirteen/css/editor-style.css
+==> default: wordpress/wp-content/themes/twentythirteen/content-none.php
+==> default: wordpress/wp-content/themes/twentythirteen/sidebar.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-link.php
+==> default: wordpress/wp-content/themes/twentythirteen/inc/
+==> default: wordpress/wp-content/themes/twentythirteen/inc/back-compat.php
+==> default: wordpress/wp-content/themes/twentythirteen/inc/custom-header.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-video.php
+==> default: wordpress/wp-content/themes/twentythirteen/category.php
+==> default: wordpress/wp-content/themes/twentythirteen/page.php
+==> default: wordpress/wp-content/themes/twentythirteen/functions.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-status.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-audio.php
+==> default: wordpress/wp-content/themes/twentythirteen/sidebar-main.php
+==> default: wordpress/wp-content/themes/twentythirteen/footer.php
+==> default: wordpress/wp-content/themes/twentythirteen/images/
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/star-thumbnail.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/star.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/circle.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/circle-thumbnail.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/diamond-thumbnail.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/headers/diamond.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/dotted-line.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/dotted-line-light.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/dotted-line-2x.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/dotted-line-light-2x.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/search-icon.png
+==> default: wordpress/wp-content/themes/twentythirteen/images/search-icon-2x.png
+==> default: wordpress/wp-content/themes/twentythirteen/404.php
+==> default: wordpress/wp-content/themes/twentythirteen/author.php
+==> default: wordpress/wp-content/themes/twentythirteen/single.php
+==> default: wordpress/wp-content/themes/twentythirteen/author-bio.php
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/Genericons-Regular.otf
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/font/
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/font/genericons-regular-webfont.eot
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/font/genericons-regular-webfont.woff
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/font/genericons-regular-webfont.ttf
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/font/genericons-regular-webfont.svg
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/COPYING.txt
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/example.html
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/README.txt
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/LICENSE.txt
+==> default: wordpress/wp-content/themes/twentythirteen/genericons/genericons.css
+==> default: wordpress/wp-content/themes/twentythirteen/taxonomy-post_format.php
+==> default: wordpress/wp-content/themes/twentythirteen/style.css
+==> default: wordpress/wp-content/themes/twentythirteen/index.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-gallery.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-aside.php
+==> default: wordpress/wp-content/themes/twentythirteen/rtl.css
+==> default: wordpress/wp-content/themes/twentythirteen/search.php
+==> default: wordpress/wp-content/themes/twentythirteen/languages/
+==> default: wordpress/wp-content/themes/twentythirteen/languages/twentythirteen.pot
+==> default: wordpress/wp-content/themes/twentythirteen/image.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-chat.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-quote.php
+==> default: wordpress/wp-content/themes/twentythirteen/header.php
+==> default: wordpress/wp-content/themes/twentythirteen/content.php
+==> default: wordpress/wp-content/themes/twentythirteen/content-image.php
+==> default: wordpress/wp-content/themes/index.php
+==> default: wordpress/wp-content/plugins/
+==> default: wordpress/wp-content/plugins/akismet/
+==> default: wordpress/wp-content/plugins/akismet/readme.txt
+==> default: wordpress/wp-content/plugins/akismet/class.akismet-admin.php
+==> default: wordpress/wp-content/plugins/akismet/.htaccess
+==> default: wordpress/wp-content/plugins/akismet/_inc/
+==> default: wordpress/wp-content/plugins/akismet/_inc/akismet.css
+==> default: wordpress/wp-content/plugins/akismet/_inc/img/
+==> default: wordpress/wp-content/plugins/akismet/_inc/img/logo-full-2x.png
+==> default: wordpress/wp-content/plugins/akismet/_inc/akismet.js
+==> default: wordpress/wp-content/plugins/akismet/_inc/form.js
+==> default: wordpress/wp-content/plugins/akismet/akismet.php
+==> default: wordpress/wp-content/plugins/akismet/wrapper.php
+==> default: wordpress/wp-content/plugins/akismet/views/
+==> default: wordpress/wp-content/plugins/akismet/views/config.php
+==> default: wordpress/wp-content/plugins/akismet/views/get.php
+==> default: wordpress/wp-content/plugins/akismet/views/strict.php
+==> default: wordpress/wp-content/plugins/akismet/views/notice.php
+==> default: wordpress/wp-content/plugins/akismet/views/stats.php
+==> default: wordpress/wp-content/plugins/akismet/views/start.php
+==> default: wordpress/wp-content/plugins/akismet/index.php
+==> default: wordpress/wp-content/plugins/akismet/class.akismet-widget.php
+==> default: wordpress/wp-content/plugins/akismet/class.akismet.php
+==> default: wordpress/wp-content/plugins/index.php
+==> default: wordpress/wp-content/plugins/hello.php
+==> default: wordpress/wp-content/index.php
+==> default: wordpress/xmlrpc.php
+==> default: wordpress/wp-load.php
+==> default: wordpress/license.txt
+==> default: wordpress/wp-login.php
+==> default: wordpress/wp-signup.php
+==> default: wordpress/wp-blog-header.php
+==> default: wordpress/wp-links-opml.php
+==> default: wordpress/wp-trackback.php
+==> default: wordpress/index.php
+==> default: wordpress/readme.html
+==> default: wordpress/wp-includes/
+==> default: wordpress/wp-includes/js/
+==> default: wordpress/wp-includes/js/media-audiovideo.min.js
+==> default: wordpress/wp-includes/js/customize-preview.min.js
+==> default: wordpress/wp-includes/js/tw-sack.js
+==> default: wordpress/wp-includes/js/media-views.min.js
+==> default: wordpress/wp-includes/js/autosave.min.js
+==> default: wordpress/wp-includes/js/underscore.min.js
+==> default: wordpress/wp-includes/js/crop/
+==> default: wordpress/wp-includes/js/crop/cropper.js
+==> default: wordpress/wp-includes/js/crop/cropper.css
+==> default: wordpress/wp-includes/js/crop/marqueeHoriz.gif
+==> default: wordpress/wp-includes/js/crop/marqueeVert.gif
+==> default: wordpress/wp-includes/js/wpdialog.js
+==> default: wordpress/wp-includes/js/utils.js
+==> default: wordpress/wp-includes/js/customize-preview.js
+==> default: wordpress/wp-includes/js/wp-pointer.js
+==> default: wordpress/wp-includes/js/media-editor.min.js
+==> default: wordpress/wp-includes/js/plupload/
+==> default: wordpress/wp-includes/js/plupload/handlers.min.js
+==> default: wordpress/wp-includes/js/plupload/plupload.flash.swf
+==> default: wordpress/wp-includes/js/plupload/handlers.js
+==> default: wordpress/wp-includes/js/plupload/wp-plupload.js
+==> default: wordpress/wp-includes/js/plupload/plupload.silverlight.xap
+==> default: wordpress/wp-includes/js/plupload/license.txt
+==> default: wordpress/wp-includes/js/plupload/wp-plupload.min.js
+==> default: wordpress/wp-includes/js/plupload/plupload.full.min.js
+==> default: wordpress/wp-includes/js/wp-list-revisions.min.js
+==> default: wordpress/wp-includes/js/customize-base.min.js
+==> default: wordpress/wp-includes/js/colorpicker.js
+==> default: wordpress/wp-includes/js/imgareaselect/
+==> default: wordpress/wp-includes/js/imgareaselect/jquery.imgareaselect.min.js
+==> default: wordpress/wp-includes/js/imgareaselect/imgareaselect.css
+==> default: wordpress/wp-includes/js/imgareaselect/border-anim-v.gif
+==> default: wordpress/wp-includes/js/imgareaselect/jquery.imgareaselect.js
+==> default: wordpress/wp-includes/js/imgareaselect/border-anim-h.gif
+==> default: wordpress/wp-includes/js/shortcode.js
+==> default: wordpress/wp-includes/js/wp-lists.js
+==> default: wordpress/wp-includes/js/wplink.min.js
+==> default: wordpress/wp-includes/js/thickbox/
+==> default: wordpress/wp-includes/js/thickbox/thickbox.css
+==> default: wordpress/wp-includes/js/thickbox/loadingAnimation.gif
+==> default: wordpress/wp-includes/js/thickbox/macFFBgHack.png
+==> default: wordpress/wp-includes/js/thickbox/thickbox.js
+==> default: wordpress/wp-includes/js/quicktags.js
+==> default: wordpress/wp-includes/js/zxcvbn-async.min.js
+==> default: wordpress/wp-includes/js/utils.min.js
+==> default: wordpress/wp-includes/js/media-audiovideo.js
+==> default: wordpress/wp-includes/js/json2.min.js
+==> default: wordpress/wp-includes/js/heartbeat.min.js
+==> default: wordpress/wp-includes/js/customize-loader.js
+==> default: wordpress/wp-includes/js/wp-list-revisions.js
+==> default: wordpress/wp-includes/js/media-grid.js
+==> default: wordpress/wp-includes/js/wp-util.min.js
+==> default: wordpress/wp-includes/js/media-models.min.js
+==> default: wordpress/wp-includes/js/colorpicker.min.js
+==> default: wordpress/wp-includes/js/wp-auth-check.min.js
+==> default: wordpress/wp-includes/js/admin-bar.min.js
+==> default: wordpress/wp-includes/js/wp-ajax-response.min.js
+==> default: wordpress/wp-includes/js/comment-reply.js
+==> default: wordpress/wp-includes/js/customize-models.js
+==> default: wordpress/wp-includes/js/jquery/
+==> default: wordpress/wp-includes/js/jquery/jquery-migrate.js
+==> default: wordpress/wp-includes/js/jquery/jquery.form.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.masonry.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.ui.touch-punch.js
+==> default: wordpress/wp-includes/js/jquery/jquery.schedule.js
+==> default: wordpress/wp-includes/js/jquery/jquery.table-hotkeys.min.js
+==> default: wordpress/wp-includes/js/jquery/suggest.js
+==> default: wordpress/wp-includes/js/jquery/jquery.query.js
+==> default: wordpress/wp-includes/js/jquery/jquery.table-hotkeys.js
+==> default: wordpress/wp-includes/js/jquery/jquery.js
+==> default: wordpress/wp-includes/js/jquery/jquery.hotkeys.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.form.js
+==> default: wordpress/wp-includes/js/jquery/ui/
+==> default: wordpress/wp-includes/js/jquery/ui/datepicker.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/dialog.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-puff.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-shake.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-highlight.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-transfer.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/progressbar.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-fade.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/mouse.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/slider.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-scale.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/droppable.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/position.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/draggable.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/selectmenu.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-bounce.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/spinner.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-slide.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/accordion.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/resizable.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-pulsate.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/widget.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-fold.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-drop.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/autocomplete.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-explode.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/selectable.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/core.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/menu.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/tabs.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-size.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/sortable.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-clip.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/effect-blind.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/tooltip.min.js
+==> default: wordpress/wp-includes/js/jquery/ui/button.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery-migrate.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.hotkeys.js
+==> default: wordpress/wp-includes/js/jquery/suggest.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.color.min.js
+==> default: wordpress/wp-includes/js/jquery/jquery.serialize-object.js
+==> default: wordpress/wp-includes/js/wp-pointer.min.js
+==> default: wordpress/wp-includes/js/customize-views.js
+==> default: wordpress/wp-includes/js/media-models.js
+==> default: wordpress/wp-includes/js/mce-view.js
+==> default: wordpress/wp-includes/js/media-views.js
+==> default: wordpress/wp-includes/js/shortcode.min.js
+==> default: wordpress/wp-includes/js/quicktags.min.js
+==> default: wordpress/wp-includes/js/hoverIntent.js
+==> default: wordpress/wp-includes/js/zxcvbn.min.js
+==> default: wordpress/wp-includes/js/customize-preview-widgets.js
+==> default: wordpress/wp-includes/js/wpdialog.min.js
+==> default: wordpress/wp-includes/js/wp-auth-check.js
+==> default: wordpress/wp-includes/js/media-editor.js
+==> default: wordpress/wp-includes/js/jcrop/
+==> default: wordpress/wp-includes/js/jcrop/Jcrop.gif
+==> default: wordpress/wp-includes/js/jcrop/jquery.Jcrop.min.js
+==> default: wordpress/wp-includes/js/jcrop/jquery.Jcrop.min.css
+==> default: wordpress/wp-includes/js/backbone.min.js
+==> default: wordpress/wp-includes/js/wp-backbone.min.js
+==> default: wordpress/wp-includes/js/masonry.min.js
+==> default: wordpress/wp-includes/js/mediaelement/
+==> default: wordpress/wp-includes/js/mediaelement/wp-playlist.js
+==> default: wordpress/wp-includes/js/mediaelement/loading.gif
+==> default: wordpress/wp-includes/js/mediaelement/mediaelementplayer.min.css
+==> default: wordpress/wp-includes/js/mediaelement/bigplay.png
+==> default: wordpress/wp-includes/js/mediaelement/flashmediaelement.swf
+==> default: wordpress/wp-includes/js/mediaelement/wp-mediaelement.js
+==> default: wordpress/wp-includes/js/mediaelement/background.png
+==> default: wordpress/wp-includes/js/mediaelement/mediaelement-and-player.min.js
+==> default: wordpress/wp-includes/js/mediaelement/bigplay.svg
+==> default: wordpress/wp-includes/js/mediaelement/controls.png
+==> default: wordpress/wp-includes/js/mediaelement/silverlightmediaelement.xap
+==> default: wordpress/wp-includes/js/mediaelement/skipback.png
+==> default: wordpress/wp-includes/js/mediaelement/wp-mediaelement.css
+==> default: wordpress/wp-includes/js/mediaelement/controls.svg
+==> default: wordpress/wp-includes/js/heartbeat.js
+==> default: wordpress/wp-includes/js/admin-bar.js
+==> default: wordpress/wp-includes/js/wplink.js
+==> default: wordpress/wp-includes/js/wp-ajax-response.js
+==> default: wordpress/wp-includes/js/comment-reply.min.js
+==> default: wordpress/wp-includes/js/swfupload/
+==> default: wordpress/wp-includes/js/swfupload/handlers.min.js
+==> default: wordpress/wp-includes/js/swfupload/swfupload.js
+==> default: wordpress/wp-includes/js/swfupload/swfupload.swf
+==> default: wordpress/wp-includes/js/swfupload/handlers.js
+==> default: wordpress/wp-includes/js/swfupload/plugins/
+==> default: wordpress/wp-includes/js/swfupload/plugins/swfupload.speed.js
+==> default: wordpress/wp-includes/js/swfupload/plugins/swfupload.cookies.js
+==> default: wordpress/wp-includes/js/swfupload/plugins/swfupload.queue.js
+==> default: wordpress/wp-includes/js/swfupload/plugins/swfupload.swfobject.js
+==> default: wordpress/wp-includes/js/swfupload/license.txt
+==> default: wordpress/wp-includes/js/mce-view.min.js
+==> default: wordpress/wp-includes/js/customize-models.min.js
+==> default: wordpress/wp-includes/js/customize-loader.min.js
+==> default: wordpress/wp-includes/js/hoverIntent.min.js
+==> default: wordpress/wp-includes/js/tinymce/
+==> default: wordpress/wp-includes/js/tinymce/themes/
+==> default: wordpress/wp-includes/js/tinymce/themes/modern/
+==> default: wordpress/wp-includes/js/tinymce/themes/modern/theme.min.js
+==> default: wordpress/wp-includes/js/tinymce/themes/modern/theme.js
+==> default: wordpress/wp-includes/js/tinymce/langs/
+==> default: wordpress/wp-includes/js/tinymce/langs/wp-langs-en.js
+==> default: wordpress/wp-includes/js/tinymce/tinymce.min.js
+==> default: wordpress/wp-includes/js/tinymce/wp-mce-help.php
+==> default: wordpress/wp-includes/js/tinymce/plugins/
+==> default: wordpress/wp-includes/js/tinymce/plugins/lists/
+==> default: wordpress/wp-includes/js/tinymce/plugins/lists/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/lists/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wordpress/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wordpress/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wordpress/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/compat3x/
+==> default: wordpress/wp-includes/js/tinymce/plugins/compat3x/css/
+==> default: wordpress/wp-includes/js/tinymce/plugins/compat3x/css/dialog.css
+==> default: wordpress/wp-includes/js/tinymce/plugins/compat3x/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/compat3x/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpautoresize/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpautoresize/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpautoresize/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/paste/
+==> default: wordpress/wp-includes/js/tinymce/plugins/paste/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/paste/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/colorpicker/
+==> default: wordpress/wp-includes/js/tinymce/plugins/colorpicker/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/colorpicker/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/textcolor/
+==> default: wordpress/wp-includes/js/tinymce/plugins/textcolor/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/textcolor/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpdialogs/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpdialogs/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpdialogs/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpfullscreen/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpfullscreen/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpfullscreen/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/tabfocus/
+==> default: wordpress/wp-includes/js/tinymce/plugins/tabfocus/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/tabfocus/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wplink/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wplink/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wplink/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/directionality/
+==> default: wordpress/wp-includes/js/tinymce/plugins/directionality/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/directionality/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/charmap/
+==> default: wordpress/wp-includes/js/tinymce/plugins/charmap/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/charmap/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/image/
+==> default: wordpress/wp-includes/js/tinymce/plugins/image/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/image/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpeditimage/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpeditimage/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpeditimage/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpview/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpview/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpview/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/media/
+==> default: wordpress/wp-includes/js/tinymce/plugins/media/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/media/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/media/moxieplayer.swf
+==> default: wordpress/wp-includes/js/tinymce/plugins/fullscreen/
+==> default: wordpress/wp-includes/js/tinymce/plugins/fullscreen/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/fullscreen/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/hr/
+==> default: wordpress/wp-includes/js/tinymce/plugins/hr/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/hr/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpgallery/
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpgallery/plugin.min.js
+==> default: wordpress/wp-includes/js/tinymce/plugins/wpgallery/plugin.js
+==> default: wordpress/wp-includes/js/tinymce/license.txt
+==> default: wordpress/wp-includes/js/tinymce/wp-tinymce.js.gz
+==> default: wordpress/wp-includes/js/tinymce/wp-tinymce.php
+==> default: wordpress/wp-includes/js/tinymce/skins/
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/wp-content.css
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/playlist-audio.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/more.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/pagebreak.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/dashicon-no.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/embedded.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/more-2x.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/dashicon-edit.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/pagebreak-2x.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/playlist-video.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/audio.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/gallery.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/gallery-2x.png
+==> default: wordpress/wp-includes/js/tinymce/skins/wordpress/images/video.png
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/content.inline.min.css
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/content.min.css
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce-small.ttf
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce.eot
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce.ttf
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce-small.svg
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce.svg
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce-small.woff
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/readme.md
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce-small.eot
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/fonts/tinymce.woff
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/img/
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/img/object.gif
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/img/anchor.gif
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/img/trans.gif
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/img/loader.gif
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/skin.ie7.min.css
+==> default: wordpress/wp-includes/js/tinymce/skins/lightgray/skin.min.css
+==> default: wordpress/wp-includes/js/tinymce/tiny_mce_popup.js
+==> default: wordpress/wp-includes/js/tinymce/utils/
+==> default: wordpress/wp-includes/js/tinymce/utils/validate.js
+==> default: wordpress/wp-includes/js/tinymce/utils/editable_selects.js
+==> default: wordpress/wp-includes/js/tinymce/utils/form_utils.js
+==> default: wordpress/wp-includes/js/tinymce/utils/mctabs.js
+==> default: wordpress/wp-includes/js/wp-lists.min.js
+==> default: wordpress/wp-includes/js/zxcvbn-async.js
+==> default: wordpress/wp-includes/js/wp-backbone.js
+==> default: wordpress/wp-includes/js/customize-preview-widgets.min.js
+==> default: wordpress/wp-includes/js/autosave.js
+==> default: wordpress/wp-includes/js/tw-sack.min.js
+==> default: wordpress/wp-includes/js/json2.js
+==> default: wordpress/wp-includes/js/swfobject.js
+==> default: wordpress/wp-includes/js/customize-views.min.js
+==> default: wordpress/wp-includes/js/customize-base.js
+==> default: wordpress/wp-includes/js/wp-util.js
+==> default: wordpress/wp-includes/js/media-grid.min.js
+==> default: wordpress/wp-includes/media-template.php
+==> default: wordpress/wp-includes/formatting.php
+==> default: wordpress/wp-includes/rss-functions.php
+==> default: wordpress/wp-includes/wlwmanifest.xml
+==> default: wordpress/wp-includes/general-template.php
+==> default: wordpress/wp-includes/nav-menu-template.php
+==> default: wordpress/wp-includes/bookmark.php
+==> default: wordpress/wp-includes/vars.php
+==> default: wordpress/wp-includes/ms-functions.php
+==> default: wordpress/wp-includes/post.php
+==> default: wordpress/wp-includes/ms-files.php
+==> default: wordpress/wp-includes/class-wp-editor.php
+==> default: wordpress/wp-includes/class-snoopy.php
+==> default: wordpress/wp-includes/template.php
+==> default: wordpress/wp-includes/admin-bar.php
+==> default: wordpress/wp-includes/ms-settings.php
+==> default: wordpress/wp-includes/http.php
+==> default: wordpress/wp-includes/class-wp-customize-manager.php
+==> default: wordpress/wp-includes/link-template.php
+==> default: wordpress/wp-includes/css/
+==> default: wordpress/wp-includes/css/media-views.min.css
+==> default: wordpress/wp-includes/css/jquery-ui-dialog.min.css
+==> default: wordpress/wp-includes/css/editor.min.css
+==> default: wordpress/wp-includes/css/dashicons.min.css
+==> default: wordpress/wp-includes/css/wp-pointer.min.css
+==> default: wordpress/wp-includes/css/wp-auth-check.min.css
+==> default: wordpress/wp-includes/css/buttons.min.css
+==> default: wordpress/wp-includes/css/editor.css
+==> default: wordpress/wp-includes/css/wp-pointer.css
+==> default: wordpress/wp-includes/css/media-views.css
+==> default: wordpress/wp-includes/css/media-views-rtl.css
+==> default: wordpress/wp-includes/css/wp-pointer-rtl.css
+==> default: wordpress/wp-includes/css/editor-rtl.min.css
+==> default: wordpress/wp-includes/css/wp-auth-check-rtl.min.css
+==> default: wordpress/wp-includes/css/jquery-ui-dialog-rtl.min.css
+==> default: wordpress/wp-includes/css/buttons.css
+==> default: wordpress/wp-includes/css/admin-bar.css
+==> default: wordpress/wp-includes/css/dashicons.css
+==> default: wordpress/wp-includes/css/buttons-rtl.min.css
+==> default: wordpress/wp-includes/css/wp-pointer-rtl.min.css
+==> default: wordpress/wp-includes/css/admin-bar-rtl.css
+==> default: wordpress/wp-includes/css/wp-auth-check-rtl.css
+==> default: wordpress/wp-includes/css/admin-bar.min.css
+==> default: wordpress/wp-includes/css/jquery-ui-dialog-rtl.css
+==> default: wordpress/wp-includes/css/media-views-rtl.min.css
+==> default: wordpress/wp-includes/css/admin-bar-rtl.min.css
+==> default: wordpress/wp-includes/css/editor-rtl.css
+==> default: wordpress/wp-includes/css/buttons-rtl.css
+==> default: wordpress/wp-includes/css/wp-auth-check.css
+==> default: wordpress/wp-includes/css/jquery-ui-dialog.css
+==> default: wordpress/wp-includes/class-phpass.php
+==> default: wordpress/wp-includes/shortcodes.php
+==> default: wordpress/wp-includes/feed-rss2-comments.php
+==> default: wordpress/wp-includes/SimplePie/
+==> default: wordpress/wp-includes/SimplePie/Sanitize.php
+==> default: wordpress/wp-includes/SimplePie/Cache/
+==> default: wordpress/wp-includes/SimplePie/Cache/Memcache.php
+==> default: wordpress/wp-includes/SimplePie/Cache/File.php
+==> default: wordpress/wp-includes/SimplePie/Cache/Base.php
+==> default: wordpress/wp-includes/SimplePie/Cache/DB.php
+==> default: wordpress/wp-includes/SimplePie/Cache/MySQL.php
+==> default: wordpress/wp-includes/SimplePie/Content/
+==> default: wordpress/wp-includes/SimplePie/Content/Type/
+==> default: wordpress/wp-includes/SimplePie/Content/Type/Sniffer.php
+==> default: wordpress/wp-includes/SimplePie/Locator.php
+==> default: wordpress/wp-includes/SimplePie/HTTP/
+==> default: wordpress/wp-includes/SimplePie/HTTP/Parser.php
+==> default: wordpress/wp-includes/SimplePie/Item.php
+==> default: wordpress/wp-includes/SimplePie/Caption.php
+==> default: wordpress/wp-includes/SimplePie/Copyright.php
+==> default: wordpress/wp-includes/SimplePie/Parse/
+==> default: wordpress/wp-includes/SimplePie/Parse/Date.php
+==> default: wordpress/wp-includes/SimplePie/Credit.php
+==> default: wordpress/wp-includes/SimplePie/Exception.php
+==> default: wordpress/wp-includes/SimplePie/gzdecode.php
+==> default: wordpress/wp-includes/SimplePie/Net/
+==> default: wordpress/wp-includes/SimplePie/Net/IPv6.php
+==> default: wordpress/wp-includes/SimplePie/Source.php
+==> default: wordpress/wp-includes/SimplePie/Restriction.php
+==> default: wordpress/wp-includes/SimplePie/Parser.php
+==> default: wordpress/wp-includes/SimplePie/File.php
+==> default: wordpress/wp-includes/SimplePie/Registry.php
+==> default: wordpress/wp-includes/SimplePie/Enclosure.php
+==> default: wordpress/wp-includes/SimplePie/Decode/
+==> default: wordpress/wp-includes/SimplePie/Decode/HTML/
+==> default: wordpress/wp-includes/SimplePie/Decode/HTML/Entities.php
+==> default: wordpress/wp-includes/SimplePie/Category.php
+==> default: wordpress/wp-includes/SimplePie/Author.php
+==> default: wordpress/wp-includes/SimplePie/Misc.php
+==> default: wordpress/wp-includes/SimplePie/XML/
+==> default: wordpress/wp-includes/SimplePie/XML/Declaration/
+==> default: wordpress/wp-includes/SimplePie/XML/Declaration/Parser.php
+==> default: wordpress/wp-includes/SimplePie/Cache.php
+==> default: wordpress/wp-includes/SimplePie/Rating.php
+==> default: wordpress/wp-includes/SimplePie/IRI.php
+==> default: wordpress/wp-includes/SimplePie/Core.php
+==> default: wordpress/wp-includes/class-wp-embed.php
+==> default: wordpress/wp-includes/class-wp-ajax-response.php
+==> default: wordpress/wp-includes/category.php
+==> default: wordpress/wp-includes/locale.php
+==> default: wordpress/wp-includes/class-simplepie.php
+==> default: wordpress/wp-includes/functions.php
+==> default: wordpress/wp-includes/class-http.php
+==> default: wordpress/wp-includes/date.php
+==> default: wordpress/wp-includes/class-wp-image-editor-imagick.php
+==> default: wordpress/wp-includes/kses.php
+==> default: wordpress/wp-includes/class-wp-xmlrpc-server.php
+==> default: wordpress/wp-includes/class-pop3.php
+==> default: wordpress/wp-includes/script-loader.php
+==> default: wordpress/wp-includes/ID3/
+==> default: wordpress/wp-includes/ID3/module.audio.ogg.php
+==> default: wordpress/wp-includes/ID3/license.commercial.txt
+==> default: wordpress/wp-includes/ID3/module.audio.ac3.php
+==> default: wordpress/wp-includes/ID3/module.audio-video.riff.php
+==> default: wordpress/wp-includes/ID3/getid3.php
+==> default: wordpress/wp-includes/ID3/readme.txt
+==> default: wordpress/wp-includes/ID3/license.txt
+==> default: wordpress/wp-includes/ID3/getid3.lib.php
+==> default: wordpress/wp-includes/ID3/module.tag.lyrics3.php
+==> default: wordpress/wp-includes/ID3/module.tag.apetag.php
+==> default: wordpress/wp-includes/ID3/module.audio.mp3.php
+==> default: wordpress/wp-includes/ID3/module.audio.dts.php
+==> default: wordpress/wp-includes/ID3/module.audio-video.matroska.php
+==> default: wordpress/wp-includes/ID3/module.audio-video.flv.php
+==> default: wordpress/wp-includes/ID3/module.audio-video.quicktime.php
+==> default: wordpress/wp-includes/ID3/module.tag.id3v1.php
+==> default: wordpress/wp-includes/ID3/module.audio.flac.php
+==> default: wordpress/wp-includes/ID3/module.audio-video.asf.php
+==> default: wordpress/wp-includes/ID3/module.tag.id3v2.php
+==> default: wordpress/wp-includes/cron.php
+==> default: wordpress/wp-includes/class-wp-admin-bar.php
+==> default: wordpress/wp-includes/class-wp-customize-section.php
+==> default: wordpress/wp-includes/class-wp.php
+==> default: wordpress/wp-includes/default-widgets.php
+==> default: wordpress/wp-includes/l10n.php
+==> default: wordpress/wp-includes/functions.wp-styles.php
+==> default: wordpress/wp-includes/images/
+==> default: wordpress/wp-includes/images/xit.gif
+==> default: wordpress/wp-includes/images/arrow-pointer-blue.png
+==> default: wordpress/wp-includes/images/down_arrow.gif
+==> default: wordpress/wp-includes/images/spinner-2x.gif
+==> default: wordpress/wp-includes/images/icon-pointer-flag.png
+==> default: wordpress/wp-includes/images/crystal/
+==> default: wordpress/wp-includes/images/crystal/interactive.png
+==> default: wordpress/wp-includes/images/crystal/code.png
+==> default: wordpress/wp-includes/images/crystal/document.png
+==> default: wordpress/wp-includes/images/crystal/license.txt
+==> default: wordpress/wp-includes/images/crystal/default.png
+==> default: wordpress/wp-includes/images/crystal/text.png
+==> default: wordpress/wp-includes/images/crystal/audio.png
+==> default: wordpress/wp-includes/images/crystal/spreadsheet.png
+==> default: wordpress/wp-includes/images/crystal/video.png
+==> default: wordpress/wp-includes/images/crystal/archive.png
+==> default: wordpress/wp-includes/images/icon-pointer-flag-2x.png
+==> default: wordpress/wp-includes/images/wpicons.png
+==> default: wordpress/wp-includes/images/uploader-icons-2x.png
+==> default: wordpress/wp-includes/images/uploader-icons.png
+==> default: wordpress/wp-includes/images/blank.gif
+==> default: wordpress/wp-includes/images/wpspin-2x.gif
+==> default: wordpress/wp-includes/images/admin-bar-sprite-2x.png
+==> default: wordpress/wp-includes/images/down_arrow-2x.gif
+==> default: wordpress/wp-includes/images/toggle-arrow.png
+==> default: wordpress/wp-includes/images/toggle-arrow-2x.png
+==> default: wordpress/wp-includes/images/wlw/
+==> default: wordpress/wp-includes/images/wlw/wp-comments.png
+==> default: wordpress/wp-includes/images/wlw/wp-icon.png
+==> default: wordpress/wp-includes/images/wlw/wp-watermark.png
+==> default: wordpress/wp-includes/images/spinner.gif
+==> default: wordpress/wp-includes/images/wpspin.gif
+==> default: wordpress/wp-includes/images/xit-2x.gif
+==> default: wordpress/wp-includes/images/rss.png
+==> default: wordpress/wp-includes/images/media/
+==> default: wordpress/wp-includes/images/media/interactive.png
+==> default: wordpress/wp-includes/images/media/code.png
+==> default: wordpress/wp-includes/images/media/document.png
+==> default: wordpress/wp-includes/images/media/default.png
+==> default: wordpress/wp-includes/images/media/text.png
+==> default: wordpress/wp-includes/images/media/audio.png
+==> default: wordpress/wp-includes/images/media/spreadsheet.png
+==> default: wordpress/wp-includes/images/media/video.png
+==> default: wordpress/wp-includes/images/media/archive.png
+==> default: wordpress/wp-includes/images/smilies/
+==> default: wordpress/wp-includes/images/smilies/icon_mrgreen.gif
+==> default: wordpress/wp-includes/images/smilies/icon_idea.gif
+==> default: wordpress/wp-includes/images/smilies/icon_redface.gif
+==> default: wordpress/wp-includes/images/smilies/icon_surprised.gif
+==> default: wordpress/wp-includes/images/smilies/icon_twisted.gif
+==> default: wordpress/wp-includes/images/smilies/icon_eek.gif
+==> default: wordpress/wp-includes/images/smilies/icon_wink.gif
+==> default: wordpress/wp-includes/images/smilies/icon_confused.gif
+==> default: wordpress/wp-includes/images/smilies/icon_cool.gif
+==> default: wordpress/wp-includes/images/smilies/icon_arrow.gif
+==> default: wordpress/wp-includes/images/smilies/icon_razz.gif
+==> default: wordpress/wp-includes/images/smilies/icon_cry.gif
+==> default: wordpress/wp-includes/images/smilies/icon_neutral.gif
+==> default: wordpress/wp-includes/images/smilies/icon_sad.gif
+==> default: wordpress/wp-includes/images/smilies/icon_question.gif
+==> default: wordpress/wp-includes/images/smilies/icon_exclaim.gif
+==> default: wordpress/wp-includes/images/smilies/icon_mad.gif
+==> default: wordpress/wp-includes/images/smilies/icon_lol.gif
+==> default: wordpress/wp-includes/images/smilies/icon_smile.gif
+==> default: wordpress/wp-includes/images/smilies/icon_biggrin.gif
+==> default: wordpress/wp-includes/images/smilies/icon_rolleyes.gif
+==> default: wordpress/wp-includes/images/smilies/icon_evil.gif
+==> default: wordpress/wp-includes/images/admin-bar-sprite.png
+==> default: wordpress/wp-includes/images/wpicons-2x.png
+==> default: wordpress/wp-includes/images/rss-2x.png
+==> default: wordpress/wp-includes/images/arrow-pointer-blue-2x.png
+==> default: wordpress/wp-includes/version.php
+==> default: wordpress/wp-includes/class-wp-error.php
+==> default: wordpress/wp-includes/class.wp-dependencies.php
+==> default: wordpress/wp-includes/plugin.php
+==> default: wordpress/wp-includes/fonts/
+==> default: wordpress/wp-includes/fonts/dashicons.woff
+==> default: wordpress/wp-includes/fonts/dashicons.svg
+==> default: wordpress/wp-includes/fonts/dashicons.ttf
+==> default: wordpress/wp-includes/fonts/dashicons.eot
+==> default: wordpress/wp-includes/class.wp-scripts.php
+==> default: wordpress/wp-includes/class-wp-customize-setting.php
+==> default: wordpress/wp-includes/wp-db.php
+==> default: wordpress/wp-includes/registration.php
+==> default: wordpress/wp-includes/category-template.php
+==> default: wordpress/wp-includes/post-formats.php
+==> default: wordpress/wp-includes/option.php
+==> default: wordpress/wp-includes/ms-deprecated.php
+==> default: wordpress/wp-includes/ms-blogs.php
+==> default: wordpress/wp-includes/compat.php
+==> default: wordpress/wp-includes/class-json.php
+==> default: wordpress/wp-includes/feed-rss.php
+==> default: wordpress/wp-includes/media.php
+==> default: wordpress/wp-includes/revision.php
+==> default: wordpress/wp-includes/class-wp-customize-widgets.php
+==> default: wordpress/wp-includes/class-oembed.php
+==> default: wordpress/wp-includes/class-feed.php
+==> default: wordpress/wp-includes/author-template.php
+==> default: wordpress/wp-includes/deprecated.php
+==> default: wordpress/wp-includes/query.php
+==> default: wordpress/wp-includes/certificates/
+==> default: wordpress/wp-includes/certificates/ca-bundle.crt
+==> default: wordpress/wp-includes/pluggable.php
+==> default: wordpress/wp-includes/class-wp-image-editor.php
+==> default: wordpress/wp-includes/class-IXR.php
+==> default: wordpress/wp-includes/feed.php
+==> default: wordpress/wp-includes/capabilities.php
+==> default: wordpress/wp-includes/registration-functions.php
+==> default: wordpress/wp-includes/post-template.php
+==> default: wordpress/wp-includes/class-wp-walker.php
+==> default: wordpress/wp-includes/feed-atom.php
+==> default: wordpress/wp-includes/class-wp-http-ixr-client.php
+==> default: wordpress/wp-includes/class-phpmailer.php
+==> default: wordpress/wp-includes/wp-diff.php
+==> default: wordpress/wp-includes/default-filters.php
+==> default: wordpress/wp-includes/rss.php
+==> default: wordpress/wp-includes/class-smtp.php
+==> default: wordpress/wp-includes/template-loader.php
+==> default: wordpress/wp-includes/atomlib.php
+==> default: wordpress/wp-includes/theme-compat/
+==> default: wordpress/wp-includes/theme-compat/comments-popup.php
+==> default: wordpress/wp-includes/theme-compat/comments.php
+==> default: wordpress/wp-includes/theme-compat/sidebar.php
+==> default: wordpress/wp-includes/theme-compat/footer.php
+==> default: wordpress/wp-includes/theme-compat/header.php
+==> default: wordpress/wp-includes/class.wp-styles.php
+==> default: wordpress/wp-includes/rewrite.php
+==> default: wordpress/wp-includes/nav-menu.php
+==> default: wordpress/wp-includes/class-wp-customize-control.php
+==> default: wordpress/wp-includes/user.php
+==> default: wordpress/wp-includes/cache.php
+==> default: wordpress/wp-includes/session.php
+==> default: wordpress/wp-includes/ms-default-constants.php
+==> default: wordpress/wp-includes/ms-default-filters.php
+==> default: wordpress/wp-includes/post-thumbnail-template.php
+==> default: wordpress/wp-includes/class-wp-theme.php
+==> default: wordpress/wp-includes/feed-rdf.php
+==> default: wordpress/wp-includes/pomo/
+==> default: wordpress/wp-includes/pomo/mo.php
+==> default: wordpress/wp-includes/pomo/streams.php
+==> default: wordpress/wp-includes/pomo/translations.php
+==> default: wordpress/wp-includes/pomo/entry.php
+==> default: wordpress/wp-includes/pomo/po.php
+==> default: wordpress/wp-includes/bookmark-template.php
+==> default: wordpress/wp-includes/feed-rss2.php
+==> default: wordpress/wp-includes/taxonomy.php
+==> default: wordpress/wp-includes/feed-atom-comments.php
+==> default: wordpress/wp-includes/load.php
+==> default: wordpress/wp-includes/default-constants.php
+==> default: wordpress/wp-includes/meta.php
+==> default: wordpress/wp-includes/theme.php
+==> default: wordpress/wp-includes/comment-template.php
+==> default: wordpress/wp-includes/class-wp-customize-panel.php
+==> default: wordpress/wp-includes/pluggable-deprecated.php
+==> default: wordpress/wp-includes/widgets.php
+==> default: wordpress/wp-includes/functions.wp-scripts.php
+==> default: wordpress/wp-includes/class-wp-image-editor-gd.php
+==> default: wordpress/wp-includes/canonical.php
+==> default: wordpress/wp-includes/ms-load.php
+==> default: wordpress/wp-includes/Text/
+==> default: wordpress/wp-includes/Text/Diff/
+==> default: wordpress/wp-includes/Text/Diff/Engine/
+==> default: wordpress/wp-includes/Text/Diff/Engine/string.php
+==> default: wordpress/wp-includes/Text/Diff/Engine/native.php
+==> default: wordpress/wp-includes/Text/Diff/Engine/xdiff.php
+==> default: wordpress/wp-includes/Text/Diff/Engine/shell.php
+==> default: wordpress/wp-includes/Text/Diff/Renderer/
+==> default: wordpress/wp-includes/Text/Diff/Renderer/inline.php
+==> default: wordpress/wp-includes/Text/Diff/Renderer.php
+==> default: wordpress/wp-includes/Text/Diff.php
+==> default: wordpress/wp-includes/update.php
+==> default: wordpress/wp-includes/comment.php
+==> default: wordpress/wp-config-sample.php
+==> default:  * Restarting nginx nginx
+==> default:    ...done.
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   lynx-cur
+==> default: The following NEW packages will be installed:
+==> default:   lynx lynx-cur
+==> default: 0 upgraded, 2 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 960 kB of archives.
+==> default: After this operation, 2,570 kB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main lynx-cur amd64 2.8.8pre4-1 [956 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty/main lynx all 2.8.8pre4-1 [4,184 B]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 960 kB in 6s (149 kB/s)
+==> default: Selecting previously unselected package lynx-cur.
+==> default: (Reading database ... 61315 files and directories currently installed.)
+==> default: Preparing to unpack .../lynx-cur_2.8.8pre4-1_amd64.deb ...
+==> default: Unpacking lynx-cur (2.8.8pre4-1) ...
+==> default: Selecting previously unselected package lynx.
+==> default: Preparing to unpack .../lynx_2.8.8pre4-1_all.deb ...
+==> default: Unpacking lynx (2.8.8pre4-1) ...
+==> default: Processing triggers for mime-support (3.54ubuntu1.1) ...
+==> default: Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+==> default: Setting up lynx-cur (2.8.8pre4-1) ...
+==> default: update-alternatives: 
+==> default: using /usr/bin/lynx to provide /usr/bin/www-browser (www-browser) in auto mode
+==> default: Setting up lynx (2.8.8pre4-1) ...
+==> default: Reading package lists...
+==> default: Building dependency tree...
+==> default: Reading state information...
+==> default: The following extra packages will be installed:
+==> default:   libdbd-mysql-perl libdbi-perl libterm-readkey-perl mysql-client-5.5
+==> default:   mysql-client-core-5.5
+==> default: Suggested packages:
+==> default:   libclone-perl libmldbm-perl libnet-daemon-perl libplrpc-perl
+==> default:   libsql-statement-perl
+==> default: The following NEW packages will be installed:
+==> default:   libdbd-mysql-perl libdbi-perl libterm-readkey-perl mysql-client
+==> default:   mysql-client-5.5 mysql-client-core-5.5
+==> default: 0 upgraded, 6 newly installed, 0 to remove and 32 not upgraded.
+==> default: Need to get 3,321 kB of archives.
+==> default: After this operation, 40.1 MB of additional disk space will be used.
+==> default: Get:1 http://archive.ubuntu.com/ubuntu/ trusty/main libdbi-perl amd64 1.630-1 [879 kB]
+==> default: Get:2 http://archive.ubuntu.com/ubuntu/ trusty/main libdbd-mysql-perl amd64 4.025-1 [99.3 kB]
+==> default: Get:3 http://archive.ubuntu.com/ubuntu/ trusty/main libterm-readkey-perl amd64 2.31-1 [27.4 kB]
+==> default: Get:4 http://archive.ubuntu.com/ubuntu/ trusty-updates/main mysql-client-core-5.5 amd64 5.5.41-0ubuntu0.14.04.1 [710 kB]
+==> default: Get:5 http://archive.ubuntu.com/ubuntu/ trusty-updates/main mysql-client-5.5 amd64 5.5.41-0ubuntu0.14.04.1 [1,592 kB]
+==> default: Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main mysql-client all 5.5.41-0ubuntu0.14.04.1 [12.3 kB]
+==> default: dpkg-preconfigure: unable to re-open stdin: No such file or directory
+==> default: Fetched 3,321 kB in 14s (222 kB/s)
+==> default: Selecting previously unselected package libdbi-perl.
+==> default: (Reading database ... 61389 files and directories currently installed.)
+==> default: Preparing to unpack .../libdbi-perl_1.630-1_amd64.deb ...
+==> default: Unpacking libdbi-perl (1.630-1) ...
+==> default: Selecting previously unselected package libdbd-mysql-perl.
+==> default: Preparing to unpack .../libdbd-mysql-perl_4.025-1_amd64.deb ...
+==> default: Unpacking libdbd-mysql-perl (4.025-1) ...
+==> default: Selecting previously unselected package libterm-readkey-perl.
+==> default: Preparing to unpack .../libterm-readkey-perl_2.31-1_amd64.deb ...
+==> default: Unpacking libterm-readkey-perl (2.31-1) ...
+==> default: Selecting previously unselected package mysql-client-core-5.5.
+==> default: Preparing to unpack .../mysql-client-core-5.5_5.5.41-0ubuntu0.14.04.1_amd64.deb ...
+==> default: Unpacking mysql-client-core-5.5 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Selecting previously unselected package mysql-client-5.5.
+==> default: Preparing to unpack .../mysql-client-5.5_5.5.41-0ubuntu0.14.04.1_amd64.deb ...
+==> default: Unpacking mysql-client-5.5 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Selecting previously unselected package mysql-client.
+==> default: Preparing to unpack .../mysql-client_5.5.41-0ubuntu0.14.04.1_all.deb ...
+==> default: Unpacking mysql-client (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Processing triggers for man-db (2.6.7.1-1ubuntu1) ...
+==> default: Setting up libdbi-perl (1.630-1) ...
+==> default: Setting up libdbd-mysql-perl (4.025-1) ...
+==> default: Setting up libterm-readkey-perl (2.31-1) ...
+==> default: Setting up mysql-client-core-5.5 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Setting up mysql-client-5.5 (5.5.41-0ubuntu0.14.04.1) ...
+==> default: Setting up mysql-client (5.5.41-0ubuntu0.14.04.1) ...
