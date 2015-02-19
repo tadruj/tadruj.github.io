@@ -1,0 +1,5 @@
+[user]
+	email = dev@vagrant
+	name = Developer on Vagrant
+[push]
+	default = simple

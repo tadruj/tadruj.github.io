@@ -33,19 +33,19 @@ Vagrant.configure(2) do |config| # 2 is Vagrantfile version
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "www", "/var/www"
+  config.vm.synced_folder "www", "/var/www", group: "www-data", owner: "www-data"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  config.vm.provider "virtualbox" do |vb|
+  # config.vm.provider "virtualbox" do |vb|
   #   # Display the VirtualBox GUI when booting the machine
-    vb.gui = true
+  #   vb.gui = true
   #
   #   # Customize the amount of memory on the VM:
   #   vb.memory = "1024"
-  end
+  # end
   #
   # View the documentation for the provider you are using for more
   # information on available options.
@@ -84,10 +84,24 @@ Vagrant.configure(2) do |config| # 2 is Vagrantfile version
     sudo mkdir -p /var/www
 
       # Wordpress
-      wget -q http://wordpress.org/wordpress-4.1.tar.gz
-      tar xvfz wordpress-4.1.tar.gz
-      rm wordpress-4.1.tar.gz
-      sudo mv wordpress /var/www/wordpress
+      # wget -q http://wordpress.org/wordpress-4.1.tar.gz
+      # tar xvfz wordpress-4.1.tar.gz
+      # rm wordpress-4.1.tar.gz
+      # sudo mv wordpress /var/www/wordpress
+
+      # Wordpress from Bitbucket - deployment keys have to be set
+      sudo apt-get -y install git
+      sudo mkdir -p /var/www/.ssh
+      sudo cp /vagrant/ssh/id_rsa* /var/www/.ssh
+      cd /var/www
+      sudo -H -u www-data git clone git@bitbucket.org:gnowbe/wordpress.git wordpress
+      sudo chown --recursive www-data.www-data wordpress
+      cd /var/www/wordpress
+      sudo -H -u www-data git config --global user.email "dev@vagrant"
+      sudo -H -u www-data git config --global user.name "Developer on Vagrant"
+      sudo -H -u www-data git config --global push.default simple
+      sudo -H -u www-data git checkout development
+      sudo -H -u www-data git pull
 
     # development environment variables
     sudo cp /vagrant/etc/apache2/envvars /etc/apache2/envvars
