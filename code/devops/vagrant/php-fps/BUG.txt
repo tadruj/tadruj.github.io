@@ -1,0 +1,7 @@
+ clear_env = no is not working
+ so pool.d/www.conf can't pass
+ env[WHAT] = $WHAT
+ 
+ http://localhost:8080/tst.php:
+ echo('USER=' . getenv('USER') . ';HOME=' . getenv('HOME') . ';GNOWBE=' . getenv('GNOWBE'));
+ 
