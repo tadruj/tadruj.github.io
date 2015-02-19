@@ -1,0 +1,3 @@
+Problems with file upload to folder
+vagrant shared folder puts vagrant as an owner
+Do S3 uploads module
